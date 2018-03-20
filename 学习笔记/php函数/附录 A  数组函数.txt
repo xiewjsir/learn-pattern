@@ -1,0 +1,1106 @@
+附录A 数组函数
+
+array 
+
+□ 适用版本：未知
+□ 函数功能：产生一个数组。
+□ 函数语法：array array ([mixed ...]) 
+□ 函数说明：array 并非一般的函数, 它使用在一般的程序语法中, 数组元素的内容可以通
+过 => 运算符给定一个索引及值。下面的范例就是用来说明怎样建立一个二维的数组, 并且
+在数组中如何指定数值或数据给数组内的元素, 最后并且列出数组中某一个元素的内容。
+□ 范例程序
+<?php 
+$fruits = array( 
+"fruits" => array ("a"=>"orange", 
+"b"=>"banana"/ "c"=>"apple"), 
+"numbers" => array (1, 2, 3, 4, 5, 6), 
+"holes" => array ("first", 5 => 
+"second", "third") 
+);
+
+ echo $fruit["fruits"]["b"] 
+?> 
+
+□ 执行结果： banana 
+□ 参考命令：list() 
+array_count_values 
+
+□ 适用版本：PHP4 >= 4.0b4 
+□ 函数功能：计算数组所有的数值或文字在数组中出现的次数。
+□ 函数语法：array array_count_values (array input) 
+□ 函数说明：Array_count_values () 会返回一个数组, 数组包含所有的数值或文字在
+输入数组中出现的次数。在下面的范例程序中, 1 现了一次, 2 出现两次, chinese 出现了一次, 
+man 出现了两次, Array_count_values() 执行以后, 数组$answer 自动变成array (1=>1, 2=>2, 
+"chinese"=>1, "man"=>2) , 最后印出 $answer["chinese"] 的内容。
+□ 范例程序：
+
+<?php 
+$array -array (1,2, "chinese", 2, "man", 
+"nam"); 
+$answer=array_count_values ($array); 
+echo $answer["chinese"]; 
+
+?> 
+
+□ 执行结果：1 
+□ 参考命令：无
+array_diff 
+
+□ 适用版本：PHP4 >= 4.0.1 
+□ 函数功能：计算数组中不同的数组元素。
+□ 函数语法：array array_diff (array array1, array array2 [, array ...]) 
+□ 函数说明：array_diff() 将的返回一个数组, 这个数组中包含的数值来源, 是第一个数组中
+曾经出现的元素, 却没有在第二个数组中出现的。在下面的这个范例中, 第一个数组有 a b c 
+三个数组元素, 第二个数组有a c d 三个数组元素, array_diff ($array1, $array2) 返回的数组, 
+存在 $result 变量中。
+□ 范例程序：
+<?php 
+$array1=array("choice1"=>"a","b","c"); 
+$array2=array("choice2"=>"a","c","d"); 
+$result=array_diff($array1, $array2); 
+foreach($result as $value) { 
+
+echo "$value <br>"; 
+} 
+?> 
+
+□ 执行结果：d 
+□ 参考命令：array_intersect() 
+array_intersect 
+
+□ 适用版本：PHP4 >= 4.0.1 
+
+□ 函数功能：计算数组元素的交集。
+□ 函数语法：array array_intersect (array array1, array array2 [, array ...]) 
+□ 函数说明：array_intersect() 会返回一个数组, 包含了参数中所有数组曾经出现过的数组
+元素。
+□ 范例程序：
+<?php 
+$array1=array("a" => " 绿色", "红色", "蓝色", "白色"); 
+$array2=array("b" => " 绿色", "黄色", "黑色", "红色"); 
+$result=array_intersect ($array1,$array2); 
+foreach($result as $value){ 
+
+ echo "$value <br>"; 
+} 
+?>
+
+
+□ 执行结果：红色绿色
+□ 参考命令：array_diff() 
+array_keys 
+
+□ 适用版本：PHP4 
+□ 函数功能：返回一个数组所有的键值。
+□ 函数语法：array array_keys (array input [, mixed search_vlaue]) 
+□ 函数说明：array_keys() 会返回输入数组中的键值 (数字或文字) , 如果选择指定
+search_value , 则只有这个数值的键值会被返回, 否则输入数组中的所有数值都会被返回。
+□ 范例程序：
+<?php 
+$array=array(0 => 100, "color" => "red"); 
+$array_keys($array); 
+foreach($result as $value){ 
+
+ echo "$value <br>"; 
+} 
+$array=array(1, 100, 2, 100); 
+array_keys($array, 100); 
+foreach($result as $value){ 
+echo "$value <br>"; 
+} 
+?>
+
+
+
+□ 执行结果：0 color 1 3 
+□ 参考命令：array_values() 
+array_merge 
+
+□ 适用版本：PHP4 
+□ 函数功能：合并两个以上的数组。
+□ 函数语法：array array_merge (array array1, array array2[, array ...]) 
+□ 函数说明：array_merge() 可以合并两个以上的数组中的元素, 后面数组的元素附加到前
+一个数组元素的最后, 返回的结果是一个数组。假如输入的数组有相同的文字键值, 那么后
+面数组中键值里的数值将会取代前面数组中键值里的数值, 假如数组中有相同类型的数字
+键值, 则后面的数字不会取代前面的数字。
+□ 范例程序：
+<?php 
+$array1=array("水果" => "香蕉", 1, 2, 6); 
+$array2=array("f", "g", " 水果" => "西瓜", "形状" => "三角形", 2); 
+$result=array_merge($arrayl, $array2); 
+foreach($result as $value){ 
+
+ echo "$value \n"; 
+} 
+?>
+
+
+□ 执行结果：西瓜1 2 6 f g 三角形 2 
+□ 参考命令：array_merge_recursive() 
+array_merge_recursive 
+
+□ 适用版本：PHP4 >=4.0.1 
+□ 函数功能：递回混合两个或两个以上的数组。
+□ 函数语法：array array_merge_recursive (array arrya1, array array2 [, array ...]) 
+□ 函数说明：array_merge_recursive() 混合两个或两个以上数组中的元素, 后面数组中的元
+素会附加在前面数组元素的最后, 函数执行以后会返回结果数组, 如果输入数组有相同的字
+符串键值, 那么这个字符串键值的数据, 会被混和在同一个数组中，这个操作会以递回运行。
+以下面这个范例程序来说, 第一个数组中有 "水果" 及" 5 " 两个键, 而 "水果" 这个键中, 
+也有一个数组, 其键为 "偏好", 值为 "黄色", 第二个数组中有 "长形"、"水果" 两个键, 而" 
+
+水果这个键中, 对有一个数组, 其键为"偏好"、"汽球", "偏好"的键值为 "绿色"。因此经过递
+回混合后, 产生了一个新的数组, 数组中的元素包括：一个子数组 "水果"、 5 、长形, 子数
+组中有两个键值, 分别是一个 "偏好" 数组及 "汽球", 而这个 "偏好" 数组又包括两个键值, 
+分别是 "黄色" 及 "绿色"。也就是说具有如下列之数组结构：array ("水果" => array ("偏好" 
+=> array ("红色", "绿色"), "汽球"), 5, "长形") 
+
+□ 范例程序：
+<?php 
+
+ $ar1=array(" 水果"=>array("偏好"=>"黄色"),5); 
+
+ $ar2=array(" 长形","水果"=>array("偏好"=>"绿色","汽球")); 
+
+ $rsult=array_merge_recursive($ar1,$ar2); 
+
+ foreach($result as $value){ 
+
+ echo $value."\n"; 
+
+}
+
+ echo "<br>";
+
+ foreach($result["水果"] as $value){ 
+
+ echo $value; 
+
+}
+
+ echo "<br>";
+
+ foreach($result["水果"][" 偏好"] as $value){ 
+
+ echo $value; 
+
+}
+
+ ?> 
+
+□ 执行结果： Array 5 长形 Array 汽球黄色绿色
+□ 参考命令：array_merge() 
+array_multiosort 
+
+□ 适用版本：PHP4 >=4.0b4 
+□ 函数功能：将多个或多维数组排序。
+□ 函数语法：bool array_multisort (array ar1 [, mixed arg [, mixed ...[,array ...]]]) 
+□ 函数说明：array_multisort() 可以用来一次排序数个数组或是一个多维数组, 这个函数的
+参数结构有一点点不一样，但是极有弹性, 第一个参数必须是一个数组, 接着的参数可以是
+一个数组, 也可以是排序的顺序方式或比较方式, 排序的顺序方式及比较方式如下所列。排
+序的顺序方式：SORT_ASC 、升幂排序, SORT_DESC 、降幂排序；排序的比较方式：
+SORT_REGULAR 、一般的项目比较方式, SORT_NUMERIC 、数值性的项目比较方式, 
+SORT_STRING 、字符性的项目比较方式。如果没有指定顺序方式及比较方式, 则内定的设
+置为 SORT_ASC 及SORT_REGULAR, 如果排序成功会顺回 true 否则返回 false。
+
+□ 范例程序 1： 
+<?php 
+$ar1=array("1",500,100,"a"); 
+$ar2=array(1,3,5,"4"); 
+array_multisort($ar1,$ar2); 
+foreach($ar1 as $value){ 
+
+ echo "$value \n"; 
+} 
+echo "<br>"; 
+foreach($ar2 as $value){ 
+
+ echo "$value \n"; 
+} 
+?> 
+
+□ 执行结果：1 a 100 500 1 4 5 3 
+□ 范例程序 2： 
+<?php 
+$ar=array(array("10",500,100,"a"),array(1,3,"2",1)); 
+array_multisort($ar[0],SORT_ASC,SORT_STRING,$ar[1],SORT_NUMERIC,SORT_DESC); 
+foreach($ar[0] as $value){ 
+
+
+ echo "$value \n" 
+} 
+echo "<br>"; 
+foreach($ar[1] as $value){ 
+
+ echo "$value \n" 
+} 
+?> 
+
+□ 执行结果：10 100 500 a 1 2 3 1 
+□ 参考命令：无
+array_pad 
+
+□ 适用版本：PHP4 >= 4.0b4 
+□ 函数功能：使用指定的数值来延伸数组的长度。
+□ 函数语法：array array_pad(array input, int pad_size, mixed pad_value) 
+
+□ 函数说明：array_pad() 会返回一个经过延伸长度的数组, pad_size 参数用来指定延伸的长
+度。参数 pad_value 则用来设置数值, 如果 pad_size 是正数, 那么所加入的数值就会附加在
+这个数组的右边, 如果 pad_size 是负数, 那么所加入的数值就会附加在这个数组的左边, 
+如果 pad_size 的绝对值小于或等原来输入数组的长度, 那么就不会有延伸的操作产生。
+□ 范例程序
+<?php 
+$input=array(11,24,91,12); 
+$result=array_pad($input,6,0); 
+foreach($result as $value){ 
+
+ echo "$value \n"; 
+} 
+echo "<br>"; 
+$result=array_pad($input, -7, -2); 
+foreach($result as $value){ 
+
+
+ echo "$value \n"; 
+} 
+echo "<br>"; 
+$result=array_pad($input, 2, "noop"): 
+foreach($result as $value){ 
+
+
+ echo "$value \n"; 
+} 
+?>
+
+
+□ 执行结果：
+11 24 91 12 0 0 -2 -2 -2 11 24 91 12 11 24 91 12 
+
+□ 参考命令：无
+array_pop 
+
+□ 适用版本：PHP4 
+□ 函数功能：取出数组中最后的元素
+□ 函数语法：mixed array_pop (array array) 
+□ 函数说明：array_pop() 取出并返回数组的最后一个数值, 并且使原来的数组缩短一个数
+组元素, 这个功能使数组非常类似堆栈。
+□ 范例程序
+<?php 
+$array1=array("a" => " 绿色","红色","蓝色","白色"); 
+
+
+ $array2=array("b" => " 绿色","黄色","黑色","红色"); 
+$result1=array_pop($array1); 
+$result2=array_pop($array2); 
+echo "$result1 <br>"; 
+echo "$result2 <br>"; 
+?>
+
+
+□ 执行结果：白色红色
+□ 参考命令：array_push(), array_shift(), array_unshift() 
+array_push 
+
+□ 适用版本：PHP4 
+□ 函数功能：在数组的最后加入一个或多个元素。
+□ 函数语法：int array_push (array array, mixed var [, mixed ...]) 
+□ 函数说明：array_push() 把数组当作堆栈, 将变量放在数组的最后, 数组增加的长度依据
+加入变量的数量来决定, 这个函数的效果就如同重复执行下面的命令：
+$array[]=$var; 
+
+此函数会返回新加入的元素在数组中的位置。
+
+□ 范例程序
+<?php 
+$stack=array(2, -1); 
+array_push($stack, "A", 3,5); 
+foreach($stack as $value){ 
+echo $value."\n"; 
+} 
+?> 
+
+□ 执行结果：2 -1 A 3 5 
+□ 参考命令：array_pop(), array_shift(), array_unshift() 
+array_rand 
+
+
+□ 适用版本：PHP4 >=4.0.0 
+□ 函数功能：取出数组中一个或多个随机数入口。
+□ 函数语法：mixed array_rand (array input [, int num_req]) 
+□ 函数说明：array_rand() 如果想要在一个数组中, 随机选取其中的某几个, 这个函数非常
+有用, 在这个函数中, 参数 num_req 用来指定你希望选取多少个随机数入口, 如果不指定
+默认值是 1, 在使用这个函数之前, 记得先使用 srand() 来设置随机数产生器种子。在下面
+的这个范例中, 会产生三个随机数入口数值, 放在数组 $rand_keys 中。这个范例程序每一次
+执行的结果都不一样, 因此下面的执行结果仅供参考。
+□ 范例程序
+<?php 
+
+ srand((double)microtime()*999999999); 
+
+ $input=array(" 水果", "汽车", "房子", "网络", "银行", "公司", "学校"); 
+
+ $rand_keys=array_rand(input,3); 
+
+ foreach($rand_keys as $value){ 
+
+ echo $value."\n".$input[$value]; 
+
+}
+
+ ?> 
+
+□ 执行结果：3 网络 4 银行 6 学校
+□ 参考命令：无
+array_reverse 
+
+□ 适用版本：PHP4>=4.0b4 
+□ 函数功能：返回一个数组, 将原始数组的元素次序相反。
+□ 函数语法：array array_reverse (array array) 
+□ 函数说明：array_reverse() 会返回一个数组, 数组的内容是将输入数组的元素次序相反。
+在下面的范列程序中, 经过这个函数处理后, $result 中的元素次序都按照相反次序排列, 但
+是如果其中有的元素是数组, 则子数组中的元素不会以相反的次序排列。
+□ 范例程序
+<?php 
+$input=array("php",4.0,5, array(" 房子","汽车"),"apple"); 
+$result=array_reverse($input); 
+foreach($result as $value){ 
+echo $value."\n"; 
+} 
+echo "<br>"; 
+
+
+ foreach($result[1] as $value){ 
+
+ echo $value."\n"; 
+
+}
+
+ ?> 
+
+□ 执行结果：apple Array 5 4 php 房子汽车
+□ 参考命令：无
+array_shift 
+
+□ 适用版本：PHP4 
+□ 函数功能：取出数组的第一个元素。
+函数语法：mixed array_shift(array array) 
+函数说明：array_shift() 取出并返回数组中的第一个元素, 并且将数组中的每一个元素均往
+前移动。
+□ 范例程序
+<?php 
+
+ $register=array(" 苹果", "香蕉", "凤梨"); 
+
+ $Shift=array_shift($register); 
+
+ echo $Shift."\n<br>";
+
+ foreach($register as $value){ 
+
+ echo $value."\n"; 
+
+}
+
+ ?> 
+
+□ 执行结果：苹果香蕉凤梨
+□ 参考命令：array_unshift(), array_push(), array_pop() 
+array_slice 
+
+□ 适用版本：PHP4 
+□ 函数功能：取出数组中的部分元素。
+□ 函数语法：array array_slice(array array, int offset [, int length]) 
+□ 函数说明：array_slice() 能够依据 offset 及 length 两个参数返回数组中部分的数组元
+素。假如 offset 是正数, 则由数组的前面後计算, 假如 offset 是负数, 则计算的顺序将是由
+数组的尾端往前计算。假如 length 是正数, 那么这个序列就依照他所指定的长度取对应的
+
+元素个数, 如果 length 是负值, 那么这个序列就会停在从数组的最后算起对应的元素个数。
+假如忽略 length, 那么就行 offset 指定的位置一直到数组的最后一个元素。
+
+□ 范例程序
+<?php 
+$input=array("a", "b", "c", "d", "e", "f"); 
+$output=array_slice($inoput, 1); 
+foreach($output as $value){ 
+
+ echo $value."\n"; 
+} 
+echo "<br>"; 
+$output=array_slice($input, 2, -1); 
+foreach($output as $value){ 
+
+
+ echo $value."\n"; 
+} 
+echo "<br>"; 
+$output=array_slice($input, -3, 1); 
+foreach($output as $value){ 
+
+
+ echo $value."\n"; 
+} 
+echo "<br>"; 
+$output=array_slice($input, -5 -1); 
+foreach($output as $value){ 
+
+
+ echo $value."\n"; 
+} 
+echo "<br>"; 
+$output=array_slice($input, 0, 3); 
+foreach($output as $value){ 
+
+
+ echo $value."\n"; 
+} 
+?> 
+
+□ 执行结果：b c d e f c d e d b c d e a b c 
+□ 参考命令：无
+array_unique 
+
+□ 适用版本：PHP4 >=4.0.1 
+□ 函数功能：从数组中删除重复的数值。
+
+□ 函数语法：array array_unique(array array) 
+□ 函数说明：array_unique() 返回一个新的数组, 数组的内容是将输入数组中重复的数据去
+除, 并且将第一个数组的键值保留下来。
+□ 范例程序：
+<?php 
+$input=array(" 选择颜色"=>"红色", "蓝色", "颜色选择"=>"红色", "绿色", 
+"蓝色", "黄色"); 
+$result=array_unique($input); 
+foreach($result as $value){ 
+echo $value; 
+} 
+?> 
+
+□ 执行结果：红色绿色蓝色黄色
+□ 参考命令：无
+array_unshift 
+
+□ 适用版本：PHP4 
+□ 函数功能：在数组的前面放入一个或多个元素。
+□ 函数语法：int array_unshift(array array, mixed var [, mixed ...]) 
+□ 函数说明：array_unshift() 能放入一个或多个元素到数组的前面, 如果放入的元素是一串, 
+那么这一串元素会按照原来的排列顺序放入数组的前面, 返回的数值是新的数组的元素个
+数。
+□ 范例程序：
+<?php 
+$Array1=array("青春", "脚步"); 
+$result=array_unshift($Array1, " 我们", "踏着"，"活泼"); 
+echo $result."<br>"; 
+foreach($Array1 as $value){ 
+echo $value; 
+?> 
+
+□ 执行结果： 5 我们踏着活泼青春脚步
+□ 参考命令：array_shift(), array_push(), array_pop() 
+
+array_values 
+
+□ 适用版本：PHP4 
+□ 函数功能：返回一个数组中所有的数值部分。
+□ 函数语法：array array_value(array input) 
+□ 函数说明：array_values() 会返回输入数组中所有的数值部分, 去除键值的部分。
+□ 范例程序：
+<?php 
+
+$array=array("输入电脑"=>"错误", "内存"=>"容量"); 
+
+array_values($array); 
+
+ echo $result."<br>"; 
+
+ foreach($array as $value){ 
+
+ echo $value; 
+
+}
+
+ ?> 
+
+□ 执行结果：错误容量
+□ 参考命令：无
+arsort 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：将一个数组依据内容以相反的顺序排序。
+□ 函数语法：void arsort(array array [, int sort_flags]) 
+□ 函数说明：这个函数能够排序一个数组, 依据数值的内容反向排序, 键值也随着数值的内
+容而调整。在下面的范例中, 数组的内容依据文字的内容反向排序, 同时每一个数据的相对
+键值也随之调整。
+□ 范例程序：
+<?php 
+
+$fruits=array("水果"=>"orange", " 汽车"=>"lancer", " 书局"=>"acertwp", 
+
+"手表"=>"swiss"); 
+
+arsort($fruits); 
+
+reset($fruits); 
+
+ while(list($key, $val) = each($fruits)){ 
+
+ echo "$key = $val\n <br>";
+
+ } 
+
+
+ ?> 
+
+□ 执行结果：手表 = swiss 水果 = orange 汽车 = lancer 书局 = acertwp 
+□ 参考命令：asort(), rsort(), ksort(), sort() 
+asort 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：将一个数组依据内容的顺序排序。
+□ 函数语法：void asort (array array [, int sort_flags]) 
+□ 函数说明：这个函数能够排序一个数组, 依据数值的内容循序排序, 键值也随着数值的内
+容而调整。在下面的范例中, 数组的内容依据文字的内容循序排序, 同时每一个数据的相对
+键值也随之调整。
+□ 范例程序：
+<?php 
+$fruits=array("水果"=>"orange", " 汽车"=>"lancer", " 书局"=>"acertwp", 
+"手表"=>"swiss"); 
+asort($fruits); 
+reset($fruits); 
+while(list($key, $val) = each($fruits)){ 
+
+ echo "$key = $val\n <br>"; 
+} 
+?>
+
+
+□ 执行结果：书局 = acertwp 汽车 = lancer 水果 = orange 手表 = swiss 
+□ 参考命令：arsort(), rsort(), ksort(), sort() 
+compact 
+
+□ 适用版本：PHP4 
+□ 函数功能：利用变量及它的数值制造一个数组。
+□ 函数语法：array compact(mixed varname [, mixed ...]) 
+□ 函数说明：compact() 的参数中可以放入变量名称, 每一个参数可以是字符串或者是变量
+名称的数组, 这个数组内可以包含其他变量名称的数组。在下面的范例中, 执行的结果就相
+当于产生一个如下的数组：array("EVENT"=>"921 地震", "CITY"=>" 唐山市", 
+"COUNTRY"=>" 中国") 
+
+□ 范例程序：
+<?php 
+$CITY=" 唐山市"; 
+$COUNTRY=" 中国"; 
+$EVENT="921 地震"; 
+$LOC_VAR=array("CITY", "COUNTRY"); 
+$result=compact("EVENT", $LOC_VAR); 
+while(list($key, $val) = each($result)){ 
+
+echo "$key = $val\n <br>"; 
+} 
+?>
+
+
+□ 执行结果：EVENT = 921 地震 CITY = 唐山市 COUNTRY = 中国
+□ 参考命令：extract() 
+count 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：计算数组中元素的个数。
+□ 函数语法：int count(mixed var) 
+□ 函数说明：返回数组中元素的个数, 如果参数不是一个数组会返回 1, 如果参数没有设置
+则会返回 0, 如果数组是一个空数组, 那么也会返回 0, 可以利用函数isset() 来测试变量是
+不是已经设置。
+□ 范例程序：
+<?php 
+$CITY=" 唐山市"; 
+$COUNTRY=" 中国"; 
+$EVENT="921 地震"; 
+$LOC_VAR=array("CITY", "COUNTRY"); 
+$result=count(compact("EVENT",$LOC_VAR)); 
+echo $reslut; 
+?> 
+
+□ 执行结果：3 
+□ 参考命令：sizeof(), isset(), is_array() 
+
+current 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：目前数组中指针所指向的元素。
+□ 函数语法：mixed current(array array); 
+□ 函数说明：每一个数组都有一个内部的指针, 指向一个作用中的元素, 当数组刚开始时用
+的时候, 它会指向第一个元素, current() 函数会把目前指针所指的位置返回, 它不会指针产
+生任何操作。如果这个内部的指针, 已经指向最后一个数组元素的后面, 那么它会返回
+false。如果数组是一个空的数组, 那么数组也会返回 false, 这一特点使得我们没有办法判断
+到底现在是指向最后一个元素的后面, 还是数组里头没有任何元素, 我们或许可以利用
+each() 函数先来判断数组是不是空的。
+□ 范例程序：
+<?php 
+$CITY=" 唐山市"; 
+$COUNTRY=" 中国"; 
+$EVENT="921 地震"; 
+$LOC_VAR=array("CITY","COUNTRY","EVENT"); 
+RESET($LOC_VAR); 
+echo current($LOC_VAR)."<br>"; 
+Next($LOC_VAR); 
+echo current($LOC_VAR)."<br>"; 
+?> 
+
+□ 执行结果： CITY COUNTRY 
+□ 参考命令：end(), next(), prev(), reset() 
+each 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：从数组中返回下一个键值及其对应的数据。
+□ 函数语法：array echo (array array) 
+□ 函数说明：从数组中返回键值及其对应的数据, 并且将指针指到下一个元素。返回的数
+组以四维数组表示, 其键值分别为：0, 1, key, 及 value 。键值 0 及 key 包含数组元素的键
+值名称, 而 1 及 value 包含了数据, 假如这个数组的内部指针超过了数组的最后一个元素, 
+each() 会返回 false。
+□ 范例程序 1 
+
+<?php 
+$thing=array(" 工具", "信箱", "计算机", "公寓", "汽车", "学校"); 
+while(list($key, $val) = each($thing)){ 
+
+
+ echo "$key=$val \n <br>"; 
+} 
+?> 
+
+□执行结果： 0 = 工具 1 = 信箱 2 = 计算机 3 = 公寓 4 = 汽车 5 = 学校
+□ 范例程序 2 
+<?php 
+$thing=array('工具'=>' 子', '信箱'=>'空的', '计算机'=>'电脑');
+while(list($key, $val) = each($thing)){ 
+echo "$key = $val \n <br>";
+} 
+?>
+
+
+□ 执行结果：工具 = 子信箱 = 空的计算机 = 电脑
+□ 范例程序 3 
+<?php 
+echo "利用 POST 的方法传递参数<br>"; 
+reset($HTTP_POST_VARS); 
+while(list($key, $val) = each($HTTP_POST_VARS)){ 
+echo "$key => $val<br>"; 
+} 
+?>
+
+
+□ 执行结果：略
+□ 参考命令：key(), list(), current(), reset(), next(), prev() 
+end 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：将数组的内部指针设置在最后一个元素。
+□ 函数语法：end (array array) 
+□ 函数说明：end() 能够将数组的内部指针移动到最后一个元素。
+
+□ 范例程序：
+<?php 
+$thing=array('工具'=>' 子', '信箱'=>'空的', '计算机'=>'电脑'); 
+end($thing); 
+Print current($thing); 
+?> 
+
+□ 执行结果：电脑
+□ 参考命令：current(), each(), end(), next(), reset() 
+in_array 
+
+□ 适用版本：PHP4 
+□ 函数功能：判断某个数值是否在数组中。
+□ 函数语法：bool in_array (mixed needle, array haystack) 
+□ 函数说明：这个函数能够判断某一个数值是不是出现在数组中, 如果在数组中发现, 则会
+返回 true, 如果在这个数组中没发现, 则会返回 flase。
+□ 范例程序：
+$computer=array(" 个人电脑", "工作站", "主机", "超级电脑"); 
+if(in_array("主机", $computer)) 
+print " 发现主机这个名词"; 
+
+□ 执行结果：发现主机这个名词
+□ 参考命令：无
+key 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：从数组中提取一个键值。
+□ 函数语法：mixed key (array array) 
+□ 函数说明：key() 返回数组指针所指位置的键值。
+□ 范例程序：
+<?php 
+$computer=array(PC=>" 个人电脑", "ws=>"工作站", ME=>"主机", sc=>"超级电脑"); 
+
+
+
+ print key($computer); 
+?>
+
+
+□ 执行结果：PC 
+□ 参考命令：current(), next() 
+krsort 
+
+□ 适用版本：PHP3 >=3.013, PHP4>=4.0b4 
+□ 函数功能：利用键值反向排序一个数组
+□ 函数语法：int krsort (array array [, int sort_flags]) 
+□ 函数说明：利用键值反向排序一个数组, 并且调整其对应数据的位置。
+□ 范例程序：
+<?php 
+$fruits=array("fruit"=>"orange", "car"=>"lancer", "bookstore"=>"acertwp", 
+"watch"=>"swiss"); 
+krsort($fruits); 
+reset($fruits); 
+while(list($key, $val) = each($fruits)){ 
+
+echo "$key = $val\n <br>"; 
+} 
+?>
+
+
+□ 执行结果：watch = swiss fruit = orange car = lancer bookstore = acertwp 
+□ 参考命令：asort(), arsort(), ksort(), sort(), rsort() 
+ksort 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：利用键值排序一个数组。
+□ 函数语法：int ksort (array array [, int sort_flags]) 
+□ 函数说明：利用键值排序一个数组, 并且调整其对应数据的位置。
+□ 范例程序：
+<?php 
+$fruits=array("fruit"=>"orange", "car"=>"lancer", "bookstore"=>"acertwp", 
+
+
+ "watch"=>"swiss"); 
+ksort($fruits); 
+reset($fruits); 
+while(list($key, $val) = each($fruits)){ 
+
+
+echo "$key = $val\n <br>"; 
+} 
+?>
+
+
+□ 执行结果：bookstore = acertwp car = lancer fruit = orange watch = swiss 
+□ 参考命令：asort(), arsort(), sort(), rsort() 
+list 
+
+□ 适用版本：PHP4 
+□ 函数版能：将数组中的数据, 当作变量列出。
+□ 函数语法：void list(...); 
+□ 函数说明：就像是array() 一般, list() 并非真的是一个函数, 而是一个语言结构。在下面
+的范例中, 数组的键值及数据被当作变量一样, 并且一个一个被取出。
+□ 范例程序：
+<?php 
+$fruits=array("fruit"=>"orange", "car"=>"lancer", "bookstore"=>"acertwp", 
+"watch"=>"swiss"); 
+reset($fruits); 
+while(list($key, $val) = each($fruits)){ 
+
+echo "$key = $val\n <br>"; 
+} 
+?>
+
+
+□ 执行结果：fruit = orange car = lancer bookstore = acertwp watch = swiss 
+□ 参考命令：each(), array() 
+next 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：将数组内部的指针指向下一个元素。
+□ 函数语法：mixed next (array array) 
+
+□ 函数说明：将内部指针指向下一个位置, 并且返回数组的数据, 假如下一个位置已经没有
+元素, 则返回false。next() 的操作就像 current(), 唯一的差别就是会把指针先指向下一个位
+置再返回数据, 假如指针向下一个移动, 造成指到最后一个元素之后, 那么 next() 会返回
+false。假如这个数组没有元素, 那么这个函数会返回 flase。
+□ 范例程序：
+<?php 
+
+ $Result=array("fruit"=>"orange", "car"=>"lancer", "bookstore"=>"acertwp", 
+
+ "watch"=>"swiss");
+
+ reset($Result); 
+
+ print current($Result)."<br>"; 
+
+ next($Result);
+
+ print current($Result); 
+
+ ?> 
+
+□ 执行结果： orange lancer 
+□ 参考命令：current(), end(), prev(), reset() 
+pos 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得目前数组指针所指的元素。
+□ 函数语法：mixed pos (array array) 
+□ 函数说明：这是current() 函数的另外一个别名。
+□ 范例程序：参考current() 函数。
+□ 执行结果参考current() 函数。
+□ 参考命令end(), next(), prev(), reset()。
+prev 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：移动数组的指针至前一个元素。
+□ 函数语法：mixed prev (array array) 
+□ 函数说明：将内部指针指向前一个位置, 并且返回数组的数据, 假如前一个位置已经没有
+元素, 则返回 false。prev() 的操作就像 next(), 唯一的差别就是会把指针向前一个位置。假
+如这个数组没有元素, 那么这个函数会返回 false。
+□ 范例程序：
+
+<?php 
+
+ $Result=array("fruit"=>"orange", "car"=>"lancer", "bookstore"=>"acertwp", 
+
+ "watch"=>"swiss");
+
+ reset($Result); 
+
+ print current($Result)."<br>"; 
+
+ next($Result);
+
+ prev($Result);
+
+ print current($Result); 
+
+ ?> 
+
+□ 执行结果： orange orange 
+□ 参考命令：current(), end(), next(), reset() 
+range 
+
+□ 适用版本：PHP3 >= 3.0.8, PHP4 >=4.0b4 
+□ 函数功能：产生一个数组, 包含了一个范围的整数。
+□ 函数语法：array range(int low, int high) 
+□ 函数说明：range() 能够返回一个数组, 数组的内容由 low 参数至 high 参数, 在下面的
+范例程序中, 会产生一个数组, 数组的内容由 4 至 10。
+□ 范例程序：
+<?php 
+
+$Result=Range(4,10); 
+
+ while(list($key, $val)=each($Result)){ 
+
+ echo "$key = $val<br>"; 
+
+}
+
+ ?> 
+
+□ 执行结果：0 = 4 1 = 5 2 = 6 3 = 7 4 = 8 5 = 9 6 = 10 
+□ 参考命令：shuffle() 
+reset 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：将数组的内部指针指向数组的第一个元素。
+□ 函数语法：mixed reset (array array) 
+
+□ 函数说明：reset() 会倒转数组的内部指针, 使指针指向数组的第一个元素, 并返回数组的
+第一个元素内容。
+□ 范例程序：
+<?php 
+$Result=Range(4,6); 
+while(list($key, $val)=each($Result)){ 
+echo "$key = $val<br>"; 
+} 
+$New_Result=reset($Result); 
+echo $New_Result; 
+?> 
+
+□ 执行结果：0 = 4 1 = 5 2 = 6 4 
+□ 参考命令：current(), each(), next(), prev(), reset() 
+rsort 
+
+□ 适用版本：PHP3, PHP4 □ 函数功能：使用反向顺序排序数组。
+□ 函数语法：void rsort (array array [, int sort_flags]) 
+□ 函数说明：这个函数可以用反向的顺序排序一个数组 (由高到低), 设置 sort_flags 参数
+可以改变排序的方法, 请参考 sort() 函数。
+□ 范例程序
+<?php 
+$thing=array("orange", "lancer", "acertwp", "swiss"); 
+rsort($thing); 
+reset($thing); 
+while(list($key, $val) = each($thing)){ 
+
+ echo "$key = $val\n <br>"; 
+} 
+?>
+
+
+□ 执行结果：0 = swiss 1 = orange 2 = lancer 3 = acertwp 
+□ 参考命令arsort(), asort(), ksort(), sort(), usort() 
+shuffle 
+
+
+□ 适用版本：PHP3 =>3.0.8, PHP4 >=4.0b4 
+□ 函数功能：将数组内容随机排列。
+□ 函数语法：void shuffle (array array) 
+□ 函数说明：这个函数能够将数组的内容随机排列, 使用之前记得将随机数种子设置。
+□ 范例程序
+<?php 
+$numbers=range(1,5); 
+srand(time()); 
+shuffle($numbers); 
+while (list($key, $val) = each($numbers)) 
+{ 
+
+
+echo "$key = $val\n <br>"; 
+} 
+?> 
+
+□ 执行结果：0 = 1 1 = 3 2 = 2 3 = 5 4 = 4 
+□ 参考命令 arsort(), asort(), ksort(), rsort(), sort(), usort() 
+sizeof 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：得到数组中元素的数量。
+□ 函数语法：int sizeof (array array) 
+□ 函数说明：返回在数组中所有元素的个数。
+□ 范例程序
+<?php 
+$numbers=array("car", "house', 'fruit"); 
+print sizeof($numbers); 
+?> 
+
+□ 执行结果：3 
+□ 参考命令：count() 
+
+sort 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：排序一个数组。
+□ 函数语法：void sort (array array [, int sort_flags]) 
+□ 函数说明：这个函数可以排序一个数组, 排序完毕的数组元素按照字母顺序由高排到低。
+第二个参数 sort_flags 是选择性的, 可以用来改变排序的操作, 它的设置及操作包括：设置
+成为 SORT_REGULAR 会按照一般的方式比较项目, 设置成 SORT_NUMERIC 会以数字
+的方式比较项目, 设置成 SORT_STRIING 会以字符串的方式比较项目。
+□ 范例程序： 
+$members = array("car","house","fruit"); 
+sort ($members); 
+reset ($members);
+while (list ($key, $val) = each ($members)) 
+{ 
+echo "$key -> $val\n <BR>"; 
+} 
+?>
+
+
+□ 执行结果：0 -> car 1 -> fruit 2 -> house 
+□ 参考命令arsort(), asort(), ksort(), rsort(), usort() 
+uasort 
+
+□ 适用版本：PHP3 >=3.0.4, PHP4 
+□ 函数功能：依据用户定义的比较函数来排序一个数组。
+□ 函数语法：void uasort (array array, function cmp_function) 
+□ 函数说明：此函数能够依据用户定义的一个比较函数, 来排序一个数组的元素及其对应
+的键值。
+□ 范例程序： 
+function cmp ($a, $b){ 
+if($a == $b) return 0; 
+return($a > $b); 
+
+
+} 
+$a=array(4 =>4, 3=>3, 20=>20, 10=>10); 
+uasort($a, "cmp"); 
+while(list(, $value) = each ($a)){ 
+
+
+
+ echo "$value\n"; 
+} 
+?>
+
+
+□ 执行结果：3 4 10 20 
+□ 参考命令：usort(), uksort(), sort(), asort(), arsort(), ksort(), rsort() 
+uksort 
+
+□ 适用版本：PHP3 >=3.0.4, PHP4 
+□ 函数功能：将数组的键值使用自定义的比较函较来排序。
+□ 函数语法：void uksort (array array, function cmp_function) 
+□ 函数说明：如果想要使用特殊的准则来排序, 这个函数可以使用自定义的比较函数来排
+序数组的键值。
+□ 范例程序： 
+function cmp($a, $b){ 
+if($a == $b) return 0; 
+return($a > $b); 
+
+
+} 
+$a=array("Valuel"=>4, "Value4"=>3, uksort($a, "cmp"); 
+while(list($key, $value) = each($a)){ 
+
+
+ echo "$key -> $value\n<br>"; 
+} 
+?>
+
+
+□ 执行结果：Value1 -> 4 Value2 -> 20 Value3 -> 10 Value4 -> 3 
+□ 参考命令usort(), uasort(), sort(), asort(), arsort(), ksort(), rsort() 
+usort 
+
+□ 适用版本：PHP3 >=3.0.3, PHP4 
+□ 函数功能：将数组的数值使用自定义的比较函数来排序。
+□ 函数语法：void usort (array array, string cmp_function) 
+□ 函数说明：如果想要使用特殊的准则来排序, 这个函数可以使用自定义的比较函数来排
+序数组的数值。自定的比较函数必须返回一个小于、等于或大于零的整数。
+□ 范例程序 1 
+
+<?php 
+
+function cmp($a, $b){ 
+if($a == $b) return 0; 
+return($a > $b); 
+
+} 
+
+$a=array("Valuel"=>4, "Value4"=>3, "Value2"=>20, "Value3"=>10); 
+
+usort($a, "cmp"); 
+
+while(list($key, $value) = each($a)){ 
+echo "$key -> $value\n<br>"; 
+
+} 
+
+?> 
+
+□ 执行结果：0 -> 3 1 -> 4 2 -> 10 3 -> 20 
+□ 范例程序
+<?php 
+
+function cmp($a, $b){ 
+return strcmp($a[" 色彩"], $b[" 色彩"]); 
+
+} 
+
+$Color[0]["色彩"] = "Red"; 
+
+$Color[1]["色彩"] = "Green"; 
+
+$Color[2]["色彩"] = "White"; 
+
+$Color[3]["色彩"] = "Black"; 
+
+usort($Color, "cmp"); 
+
+while(list($key, $value) = each($Color)) 
+
+{ 
+echo "\$Color[$key]:". $value[" 色彩"]."<br>"; 
+
+} 
+
+?> 
+
+□ 执行结果：$Color[0]:Black $Color[1]:Green $Color[2]:Red $Color[3]:White 
+□ 参考命令：uasort(), uksort(), srot(), asort(), arsort(), ksort(), rsort() 
+
+<PIXTEL_MMI_EBOOK_2005>16                                                          </PIXTEL_MMI_EBOOK_2005>

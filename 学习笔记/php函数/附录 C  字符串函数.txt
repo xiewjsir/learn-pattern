@@ -1,0 +1,813 @@
+附录 C 字符串函数
+
+Chop 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：除去字符串尾部的空白。
+□ 函数语法：string chop (string str) 
+□ 函数说明：将字符串尾部的空白除去, 但是保留一个换行符号, 然后将字符串返回。
+□ 范例程序：
+<?php 
+$line="数据"; 
+echo $line." 有空白<br>"; 
+$trimmed=chop($line); 
+echo $trimmed." 去除空白"; 
+
+?> 
+
+□ 执行结果：
+数据有空白数据去除空白
+□ 参考命令：trim() 
+Chr 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：返回一个指定的字符。
+□ 函数语法：string chr (int ascii) 
+□ 函数说明：将参数 ascii 所指定的数字, 以字符串的类型返回。 $str.=chr (27) ；会将字符
+串的内容加上转义符号。但是使用$str= sprintf ("The string ends in escape: %c", 27) 似乎更理
+想, 这个函数和 ord() 正好相反。
+□ 范例程序：
+<?php 
+$str="数据"; 
+$str.=chr(65); 
+echo $str; 
+?> 
+
+
+□ 执行结果：数据A 
+□ 参考命令：sprintf() 
+echo 
+
+□ 适用版本：皆可
+□ 函数功能：输出字符串。
+□ 函数语法：echo (string arg1, string [argn]...) 
+□ 函数说明：输出所有的参数。 echo() 事实上不是一个函数, 它是一个语言的结构。
+□ 范例程序：
+<?php 
+echo " 输出结果"; 
+?> 
+
+□ 执行结果：输出结果
+□ 参考命令：print(), printf(), flush() 
+explode 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：利用一个字符串来分割另一个字符串。□函数语法：array explode (string 
+separator, string string [, int limit]) 
+□ 函数说明：返回一个字符串的数组, 数组中的每一个子字符串都是由参数 string 分割出
+来的, 且是依据参数 separator 分割。
+□ 范例程序：
+<?php 
+$stringset="字符串一字符串二字符串三"; 
+$pieces=explode("", $stringset); 
+foreach($pieces as $value){ 
+echo $value."<br>"; 
+} 
+?> 
+
+□ 执行结果：字符串一字符串二字符串三
+□ 参考命令：split(), implode() 
+
+implode 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：利用字符串将数组的元素结合起来。
+□ 函数语法：string implode (string glue, array pieces) 
+□ 函数说明：返回一个字符串, 利用参数 glue 做为连接的字符串, 将数组中的所有元素按
+照相同的顺序串接起来。
+□ 范例程序：
+<?php 
+$stringset="字符串一字符串二字符串三"; 
+$pieces=explode("", $stringset); 
+foreach($pieces as $value){ 
+echo $value."<br>"; 
+} 
+$join=implode(" 与", $pieces); 
+echo $join; 
+} 
+?> 
+
+□ 执行结果：字符串一字符串二字符串叁字符串一与字符串二与字符串三
+□ 参考命令：explode(), join(), split() 
+join 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：利用字符串将数组的元素结合起来。
+□ 函数语法：string join (string glue, array pieces) 
+□ 函数说明：join() 是 implode() 的别名。
+□ 范例程序：
+<?php 
+$stringset="字符串一字符串二字符串三"; 
+$pieces=explode("", $stringset); 
+foreach($pieces as $value){ 
+echo $value."<br>"; 
+} 
+$join=join("与", $pieces); 
+
+
+ echo $join; 
+} 
+?>
+
+
+□ 执行结果：字符串一字符串二字符串三字符串一与字符串二与字符串三
+□ 参考命令：explode(), join(), split() 
+ltrim 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：将字符串前面的空白去除。
+□ 函数语法：string ltrim (string str) 
+□ 函数说明：这个函数能够将字符串前面的空白去除以后, 返回该字符串。在下面的范例
+程序中, 原始的字符串长度为十四, 但是将空白去除后, 字符串的长度变为八。
+□ 范例程序：
+<?php 
+$string="测试字符串"; 
+echo strlen($string)."<br>"; 
+$trimmed=ltrim($string); 
+echo strlen($trimmed); 
+?> 
+
+□ 执行结果： 14 8 
+□ 参考命令：chop(), trim() 
+n12br 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：转换换行符号成为 HTML 的换行符号。
+□ 函数语法：string n12br (string string) 
+□ 函数说明：转换换行符号成为 HTML 的换行符号, 也就是转换成 <br> 符号并且将字符
+串返回。
+□ 范例程序：
+<?php 
+$string="测试字符串\n"; 
+
+
+ echo $string."<-前面的文字在网页上不的换行<br>"; 
+$newstring=n12br($string); 
+echo $newstring."<-前面的文字在网页上会换行"; 
+?>
+
+
+□ 执行结果：测试字符串 <-前面的文字在网页上不的换行测试字符串 <-前面的文字在网
+页上会换行
+□ 参考命令：htmlspecialchars(), htmlentites() 
+Ord 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：返回字符的 ASCII 数值。
+□ 函数语法：int ord (string string) 
+□ 函数说明：返回参数字符串第一个字的 ASCII 码, 这个函数和 chr() 正好相反。
+□ 范例程序：
+<?php 
+$string="A 测试字符串\n"; 
+if(or($string) == 65){ 
+echo " 这个字是 A"; 
+} 
+?> 
+
+□ 执行结果：这个字是 A 
+□ 参考命令：chr() 
+parse_str 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：剖析字符串使其成为变量。
+□ 函数语法：void parse_str (string str) 
+□ 函数说明：这个函数可以剖析一个通过 URL 所传递过来的字符串, 并且将字符串切割
+成独立的变量。
+□ 范例程序：
+<?php 
+
+
+ $str="Variable1=1&List[]= 参考数据一+参考数据二&List[] 
+=参考数据三"; 
+parse_str($str); 
+echo $Variable1."<br>"; 
+echo $List[0]."<br>"; 
+echo $List[1]; 
+?>
+
+
+□ 执行结果： 1 参考数据一参考数据二参考数据三
+□ 参考命令：无
+print 
+
+□ 适用版本：皆可
+□ 函数功能：输出字符串。
+□ 函数语法：print (string arg) 
+□ 函数说明：输出参数内的字符串。
+□ 范例程序：
+<?php 
+$str="测试字符串"; 
+print $str."<br>"; 
+?> 
+
+□ 执行结果：测试字符串
+□ 参考命令：echo(), printf(), flush() 
+printf 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：输出一个经过格式化的字符串。
+□ 函数语法：int printf (string format [, mixed args...]) 
+□ 函数说明：依据制定的格式产生输出字符串。依据制定的格式产生字符串并且将其返回。
+第一个参数就是用来制定格式, 第二个参数以后都是变量, 格式参数, 数据的配置内定都是
+靠右边, 使用 a 字符可以让数据靠左, 一般的字符 (除了 % 符号) 是直接复制到结果字符
+串上, 格式字符串可以使用的类型包括：
+
+□ %：一个文字百分比符号, 不需要参数。
+□ ：数是一个整数, 同时以二进制数表示。
+□ c：相对应的参数是一个整数, 同时以 ASCII 数值表示该字符。
+□ d：相对应的参数是一个整数, 同时以十进制数表示。
+□ f：相对应的参数是一个倍精数, 同时以浮点数来表示。
+□ o：相对应的参数是一个整数, 同时以八进制数表示。
+□ s：相对应的参数是一个字符串, 同时以字符串表示。
+□ x：相对应的参数是一个整数, 同时以十六进制表示 (小写)。
+□ X：相对应的参数是一个整数, 同时以十六进制表示 (大写)。
+例如：格式字符串「%04d」代表数据会以十进制数显示, 并且显示四位数, 没有数据的部分
+补 0。格式字符串「%01.2f」代表数据会以浮点数显示, 整数部分至少有一位数, 小数至少
+有两位数。
+
+□ 范例程序：参考 sprintf()。
+□ 执行结果：参考 sprintf()。
+□ 参考命令：print(), sprintf(), sscanf(), fscanf(), flush() 
+rtrim 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：删除字符串尾部的空白。
+□ 函数语法：string rtrim (string str) 
+□ 函数说明：将字符串尾部的空白除去, 但是保留一个换行符号, 然后将字符串返回。这是
+chop 的别名。
+□ 范例程序：
+<?php 
+$line="数据"; 
+echo $line. "有空白<BR>"; 
+$trimmed=rtrim ("$line); 
+echo $trimmed. " 去除空白"; 
+?> 
+
+□ 执行结果：数据有空白数据去除空白
+□ 参考命令：trim(), ltrim() 
+sscanf 
+
+
+□ 适用版本：PHP4 >= 4.0.1 
+□ 函数功能：依据格式析分割字符串, 并且可将其放入变量中。
+□ 函数语法：mixed sscanf (string str, string format [, string var1...]) 
+□ 函数说明：如果只设置两个参数, 这个函数会将剖析的结果放入数组中返回。第三个参
+数之后是变量名称, 剖析出来的结果可以放变量中。格式字符串可以使用的类型包括：
+□ %-一个文字百分比符号, 不需要参数。
+□ b-相对应的参数是一个整数, 同时以二进制数表示。
+□ c-相对应的参数是一个整数, 同时以 ASCII 数值表示该字符。
+□ d-相对应的参数是一个整数, 同时以十进制数表示。
+□ f-相对应的参数是一个倍精数, 同时以浮点数来表示。
+□ o-相对应的参数是一个整数, 同时以八进制数表示。
+□ s-相对应的参数是一个字符串, 同时以字符串表示。
+□ x-相对应的参数是一个整数, 同时以十六进制表示 (小写)。
+□ X-相对应的参数是一个整数, 同时以十六进制表示 (大写)。
+□ 范例程序 1： 
+<?php 
+$mandate="January 01 2000"; 
+list($month, $day, $year); 
+sscanf($mandate,"%s %d %d"); 
+echo "$year-".$month."-$day"; 
+?> 
+
+□ 执行结果：12000-January-1 
+□ 范例程序 2： 
+<?php 
+$author="10 林政锦"; 
+$n=sscanf($author,"%d %s %s", &id, &$first, &$last); 
+echo "<author id='$id'> 
+
+<firstanme>$first</firstname> 
+
+<surname>$last</surname> 
+</author>\n"; 
+?> 
+
+
+□ 执行结果：2 (必须查看网页内容) <author id='10'> <firstname> 林</firstname> <surname> 
+政锦</surname> </author> 
+□ 参考命令：fscanf(), printf(), sprintf() 
+similar_text 
+
+□ 适用版本：PHP3 >= 3.0.7, PHP4 >= 4.0b2 
+□ 函数功能：计算两个字符串间相似的程度。
+□ 函数语法：int similar_text (string first, string second [, double percent]) 
+□ 函数说明：这个函数能够计算两个字符串相似的程度, 第一个及第二个参数是设置两个
+比较字符串, 这个函数的演算法复杂度是 O(N**3), 这里的 N 是最长字符串的长度。
+□ 范例程序：
+<?php 
+$str1="测试字符串相似的程度"; 
+$str2="测试字符串相似的百分比程度"; 
+echo " 相似的 Byte 数:".similar_text ($str1, $str2, $percent)."<br>"; 
+echo " 相似的百分比数:".$percent; 
+?> 
+
+□ 执行结果：相似的 Byte 数:18 相似的百分比数:85.714285714286 
+□ 参考命令：无
+sprintf 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：返回一个经过格式化的字符串。
+□ 函数语法：string sprintf (string format [, mixed args...]) 
+□ 函数说明：依据制定的格式产生字符串并且将其返回。第一个参数就是用来制定格式, 第
+二个参数以后都是变量, 格式字符串中的一个数据格式会对应到后面一个变量参数, 数据的
+配置内定都是靠右边, 使用 a 字符可以让数据靠左, 一般的字符 (除了%符号) 是直接复制
+到结果字符串上, 格式字符串可以使用的类型包括：
+□ %-一个文字百分比符号, 不需要参数。
+□ b-相对应的参数是一个整数, 同时以二进制数表示。
+□ c-相对应的参数是一个整数, 同时以 ASCII 数值表示该字符。
+□ d-相对应的参数是一个整数, 同时以十进制数表示。
+□ f-相对应的参数是一个倍精数, 同时以浮点数来表示。
+
+□ o-相对应的参数是一个整数, 同时以八进制数表示。
+
+□ s-相对应的参数是一个字符串, 同时以字符串表示。
+□ x-相对应的参数是一个整数, 同时以十六进制表示 (小写)。
+□ X-相对应的参数是一个整数, 同时以十六进制表示 (大写)。
+例如：格式字符串「%04d」代表数据会以十进制数显示, 并且显示四位数, 没有数据的部分
+补0。格式字符串「%01.2f 」代表数据会以浮点数显示, 整数部分至少有一位数, 小数至少有
+两位数。
+
+□ 范例程序 1： 
+<?php 
+$year=2000; 
+$month=8; 
+$day=7; 
+$date=sprintf("%04d-%02d-%02d, $year, $month, $day); 
+echo $date; 
+?> 
+
+□ 执行结果：12000-08-07 
+□ 范例程序 2： 
+<?php 
+$money1=22.1; 
+$money2=12.2; 
+$money=$money1+$money2; 
+echo $money."<br>"; 
+$formatted=sprintf("%01.2f", $money); 
+echo $formatted; 
+?> 
+
+□ 执行结果： 234.3 34.30 
+□ 参考命令：printf(), sscanf() 
+strcasecmp 
+
+□ 适用版本：PHP3 >= 3.0.2, PHP4 
+□ 函数功能：两个字符串做比较 (不管大小写) 
+
+□ 函数语法：int strcasecmp (string str1, string str2) 
+□ 函数说明：假如参数 str1 小于 str2 则返回 <0, 假如 str1 大于 str2 则返回 >0, 假如两
+个字符串相等, 则转回 0。
+□ 范例程序：
+<?php 
+$var1="Hello"; 
+$var2="hello"; 
+if(!strcasecmp ($var1, $var2)){ 
+
+echo "在不管大小写的情形下$var1 与$var2 是相等的"; 
+} 
+?> 
+
+□ 执行结果：在不管大小写的情形下Hello 与hello 是相等的
+□ 参考命令：ereg(), strcmp(), substr(), stristr(), strstr() 
+strchr 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：寻找第一个字符出现的位置。
+□ 函数语法：string strchr (string haystack, string needle) 
+□ 函数说明：这个函数是 strstr() 的别名。寻找第二个参数 needle 在第一个参数 haystack 
+出现的位置, 并取出由这个位置开始的子字符串。
+□ 范例程序：
+<?php 
+$var1="This is a Hello Word"; 
+$var2="Hello"; 
+echo strchr($var1,$var2); 
+?> 
+
+□ 执行结果：
+Hello Word 
+
+□ 参考命令：无
+strcmp 
+
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：两个字符串做比较 (大小写视为不同)。
+□ 函数语法：int strcmp (string str1, string str2) 
+□ 函数说明：假如参数 str1 小于 str2 则返回 <0, 假如 str1 大于 str2 则返回 >0, 假如两
+个字符串相等, 则返回 0。这里的比较大小写视为不同。
+□ 范例程序：
+<?php 
+$var1="Hello"; 
+$var2="hello"; 
+if(!strcmp ($var1, $var2)){ 
+
+ echo " 在不管大小写的情形下$var1 与$var2 是相等的"; 
+} 
+else { 
+
+
+ echo "$var1 与 $var2 是不相等的"; 
+} 
+?>
+
+
+□ 执行结果：Hello 与 hello 是不相等的
+□ 参考命令：ereg(), strcasecmp(), substr(), stristr(), strstr() 
+strcspn 
+
+□ 适用版本：PHP3 >=3.0.3, PHP4 
+□ 函数功能：寻找不符合的初始化区段长度。
+□ 函数语法：int strcspn (string str1, string str2) 
+□ 函数说明：返回 str1 中没有包含 str2 里的任何一个字符的区段长度, 在下面的范例中, 
+第一个参数前面 8 个字都没有在第二个参数中出现, 所以执行结果为 8。
+□ 范例程序：
+<?php 
+$var1="ACFGHAAAEACCCBBBCCCDDDDE"; 
+$var2="RREEEDDDBB"; 
+echo strcspn($var1,$var2); 
+?> 
+
+□ 执行结果：8 
+□ 参考命令：strspn() 
+
+strip_tags 
+
+□ 适用版本：PHP3 >=3.0.8, PHP4 >=4.0b2 
+□ 函数功能：将 HTML 及 PHP 字符串中的 tags 标记去除。
+□ 函数语法：string strip_tags (string str [, string allowable_tags]) 
+□ 函数说明：这个函数会试着把指定字符串内的 HTML 及 PHP 的 tags 标记去除。可以
+选择性的使用第二个参数, 去指定哪一个标记不要被删除。在下面的范例程序中, 原始的字
+符串包含了 HTML 的标记, 所以在画面上的显示的蓝色的, 但是经过 string_tags 函数后, 
+只剩下单纯的文字, 所以显示的颜色是黑色。
+□ 范例程序：
+<?php 
+$var1="<font color=blue> 金门盘果路大火，军方加强警戒</font>"; 
+echo $var1."<br>"; 
+echo strip_tags($var1); 
+?> 
+
+□ 执行结果：金门盘果路大火，军方加强警戒金门盘果路大火，军方加强警戒
+□ 参考命令：无
+strlen 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得字符串的长度。
+□ 函数语法：int strlen (string str) 
+□ 函数说明：返回指定字符串长度。
+□ 范例程序：
+<?php 
+$var1="金门盘果路大火，军方加强警戒"; 
+echo strlen($var1); 
+?> 
+
+□ 执行结果：28 
+□ 参考命令：无
+
+strpos 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：发现所要寻找的字符第一次出现的位置。
+□ 函数语法：int strpos (string haystack, string needle [, int offset]) 
+□ 函数说明：发现所要寻找的字符 neelde 第一次出现在 haystack 字符串的位置, 如果没
+有发现, 函数会返回 false。
+□ 范例程序：
+<?php 
+$mystring="happy birthday"; 
+$pos=strpos($mystring,"b"); 
+if(!$pos){ 
+
+ echo "not found"; 
+} 
+else { 
+
+
+ echo $pos; 
+} 
+?>
+
+
+□ 执行结果：6 
+□ 参考命令：strrpos(), strrchr(), substr(), stristr(), strstr() 
+strrchr 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：寻找一个字符在一个字符串中最后出现的位置, 并且返回其后的字符串。
+□ 函数语法：string strrchr (string haystack, string needle) 
+□ 函数说明：假如没有发现则会返回 false, 假如第二个参数包含两个以上的字符, 那么只
+有第一个字符会被使用。
+□ 范例程序：
+<?php 
+$lastdir=substr(strrchr($PATH, ":"), 1); 
+echo $lastdir."<br>"; 
+$text="Line 1\nLine 2\nLine 3"; 
+$lastline=substr(strrchr($text, 10),1); 
+
+
+ echo $lastline; 
+?>
+
+
+□ 执行结果：\\WINDOW\\COMMAND Line 3 
+□ 参考命令：substr(), stristr(), strstr() 
+str_repeat 
+
+□ 适用版本：PHP4>=4.0b4 
+□ 函数功能：重复一个字符串。
+□ 函数语法：string str_repeat (string input, int multi) 
+□ 函数说明：将参数 input_str 设置的字符串重复多次, 并且返回。参数 input 是准备重复
+的字符串, 第二个参数 multi 是重复的次数。
+□ 范例程序：
+<?php 
+echo str_repeat ("PH", 10); 
+?> 
+
+□ 执行结果： PHPHPHPHPHPHPHPHPHPH 
+□ 参考命令：无
+strrev 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：倒转一个字符串。
+□ 函数语法：string strrev (string string) 
+□ 函数说明：将一个字符串的内容反转并且返回。
+□ 范例程序：
+<?php 
+$normal="ABCDEFG"; 
+$reversed=strrev($normal); 
+echo $reversed; 
+
+?> 
+
+
+□ 执行结果： GFEDCBA 
+□ 参考命令：无
+strrpos 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：寻找一个字符在一个字符串中最后出现的位置。
+□ 函数语法：int strrpos (string haystack, char needle); 
+□ 函数说明：假如没有发现则会返回 false, 第二个参数只允许有一个字符。
+□ 范例程序：
+<?php 
+$lastdir=strrpos($PATH, ":"); 
+echo $lastdir."<br>"; 
+$text="Line 1\nLine 2\nLine 3"; 
+$lastline=strrpos($text, 10); 
+echo $lastline; 
+?> 
+
+□ 执行结果： 23 13 
+□ 参考命令：strpos(), strrchr(), substr(), stristr(), strstr() 
+strspn 
+
+□ 适用版本：PHP3 >=3.0.3, PHP4 
+□ 函数功能：寻找相符的字符串的长度。
+□ 函数语法：int strspn (string str1, string str2) 
+□ 函数说明：返回第一个参数中曾经出现, 也出现在第二个参数中的字符的区段长度。在
+下面的范例中, 第一个参数中的前七个字都曾经在第二个参数中出现过。
+□ 范例程序：
+<?php 
+$spn=strspn("72784ianswer","1234567890abcdefgi"); 
+echo $spn; 
+?> 
+
+□ 执行结果：7 
+
+□ 参考命令：strcspn() 
+strstr 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：寻找指定字符串在另一字符串第一次出现的位置。
+□ 函数语法：string strstr (string haystack, string needle) 
+□ 函数说明：寻找第二个参数字符串在第一个参数字符串出现的位置, 并且将其后的字符
+串全部返回。如果没有发现, 则会返回 false。这个函数大小写当作不同。
+□ 范例程序：
+<?php 
+$email='ccyen@acm.org'; 
+$domain=strstr($email, '@'); 
+echo $domain; 
+?> 
+
+□ 执行结果：@acm.org 
+□ 参考命令：stristr(), strrchr(), substr(), ereg() 
+strtok 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：分隔字符串。
+□ 函数语法：string strtok (string arg1, string arg2) 
+□ 函数说明：函数 strtok() 可以用来将字符串分割, 第一个参数是预备分割的字符串。在
+下面的范例中,「This is an example string 」会被空白分割成为一个一个的单字。
+□ 范例程序：
+<?php 
+$string="This is an example string"; 
+$token=strtok($string," "); 
+while($token){ 
+
+ echo " 单字:$token<br>"; 
+$token=strtok(" "); 
+} 
+?>
+
+
+
+□ 执行结果：单字:This 单字:is 单字:an 单字:example 单字:string 
+□ 参考命令：split(), explode() 
+strtolower 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：将字符串全部转换成为小写。
+□ 函数语法：string strtolower (string str) 
+□ 函数说明：将字符串中所有的文字转换成为小写并且返回。
+□ 范例程序：
+<?php 
+
+$str = "If I were To Try Compress One 
+
+Sentence"; 
+
+$str = strtolower($str); 
+
+ print $str; 
+
+?> 
+
+□ 执行结果：if i were to try compress one sentence 
+□ 参考命令：strtoupper()、ucfirst() 
+strtoupper 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：将字符串全部转换成为大写。
+函数语法 string strtoupper (string string) 
+□ 函数说明：将字符串中所有的文字转换成为大写并且返回。
+□ 范例程序：
+<?php 
+
+ <?php 
+
+$str = "If I were To Try Compress One 
+
+Sentence"; 
+
+$str = strtoupper($str); 
+
+ print $str; 
+
+?> 
+
+
+□ 执行结果：IF I WERE TO TRY COMPRESS ONE SENTENCE 
+□ 参考命令：strtolower()、ucfirst() 
+str_replace 
+
+□ 适用版本：PHP3 >=3.0.6, PHP4 
+□ 函数功能：将字符串中部分的字符串用另外一个字符串取代。
+□ 函数语法：string str_replace (string needle, string str, string haystack) 
+□ 函数说明：这个函数将 haystack 参数中出现 needle 参数的地方用 str 参数取代, 假如
+你不需要特殊的取代规则, 也可以使用函数 ereg_replace()。
+□ 范例程序：
+<?php 
+$bodytag = str_replace ("%body%", "black", " 
+文字 = %body%"); 
+
+ print $bodytag; 
+?>
+
+
+□ 执行结果：文字 = black 
+□ 参考命令：ereg_replace(), strtr() 
+strtr 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：转换字符串中指定的字符。
+□ 函数语法：string strtr (string str, string from, string to) 
+□ 函数说明：这个函数是在字符串上操作, 转换在 str 字符串中出现的每一个 from 子字
+符串成为 to 所指定的对应字符串, 并且将转换後结果返回。如果参数 from 及 to 是不同
+长度, 那么这两个参数中较长参数多出来的元会被忽略。
+□ 范例程序：
+<?php 
+$addr = strtr("This is a book", "bo", "ho"); 
+echo $addr."<BR>"; 
+$trans = array ("hello" => "hi", "hi" => 
+"hello"); 
+
+
+echo strtr ("hi all, I said hello", $trans). 
+"<BR>"; 
+?>
+
+
+□ 执行结果：This is a hook hello all, I said hi 
+□ 参考命令：ereg_replace() 
+substr 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：返回一个字符串的部分。
+□ 函数语法：string substr (string string , int start [, int length]) 
+□ 函数说明：这个函数可以返回一个字符串的部分字符串, 参数 start 设置起始字符串, 参
+数 length 设置选取的字符串长度。字符串的第一个字的位置是 0, 如果 start 是负数, 那么
+就从字符串末端算起, 最后一个是-1, 如果 length 是负数, 那么也是行字符串末端算起。
+□ 范例程序：
+<?php 
+$rest[]=substr("abcdef",1); 
+$rest[]=substr("abcdef",1,3); 
+$rest[]=substr("abcdef",-1); 
+$rest[]=substr("abcdef",-2); 
+$rest[]=substr("abcdef",-3,1); 
+$rest[]=substr("abcdef",1,-1); 
+foreach($rest as $value){ 
+echo $value."<br>"; 
+} 
+?> 
+
+□ 执行结果：bcdef bcd f ef d bcde 
+□ 参考命令：strrchr(), ereg() 
+substr_count 
+
+□ 适用版本：PHP4 >=4.0RC2 
+□ 函数功能：计算子字符串出现的次数。
+□ 函数语法：int substr_count (string haystrack, string needle) 
+
+□ 函数说明：substr_count() 返回 needle 参数在 haystrack 参数之中出现的次数。
+□ 范例程序：
+<?php 
+echo substr_count("This is a test", "is"); 
+?> 
+
+□ 执行结果：2 
+□ 参考命令：无
+substr_replace 
+
+□ 适用版本：PHP4 >=4.0b4 
+□ 函数功能：替代部分文字的内容。
+□ 函数语法：string substr_replace (string string, string replacement, int start [, int length]) 
+□ 函数说明：参数 string 是原始的字符串, 参数 replacement 是预备替的字符串, 参数
+start 设置替代的起始地址, 参数 length 是替代长度。假如 start 是负数, 那么开始的字符将
+从字符串最后往前算。如果参数 replacement 是空的字符串, 那么 start 到 length 间的文字
+会被删除。
+□ 范例程序：
+<?php 
+$var='ABCDEFGH:/MNRPQR/'; 
+echo " 原始字符串: $var<hr>\n"; 
+echo substr_replace ($var, 'bob', 0)."<br>"; 
+echo substr_replace ($var, 'bob', 0, strlen 
+($var)) . "<br>"; 
+echo substr_replace ($var, 'bob', 0, 0)."<br>"; 
+echo substr_replace ($var, 'bob', 10, -1)."<br>"; 
+echo substr_replace ($var, 'bob', -7, -1)."<br>"; 
+echo substr_replace ($var, '', 10, -1)."<br>"; 
+?> 
+
+□ 执行结果：原始字符串: ABCDEFGH:/MNRPQR/ -----------------------------------------
+-------------------------------------- bob bob bobABCDEFGH:/MNRPQR/ ABCDEFGH:/bob/ 
+ABCDEFGH:/bob/ ABCDEFGH:// 
+□ 参考命令：str_replace(), substr() 
+
+trim 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：删除字符串中开始与结束的空白。
+□ 函数语法：string trim (string str) 
+□ 函数说明：删除字符串中开始与结束的空白同时返回该字符串。
+□ 范例程序：
+<?php 
+$var = 'ABC DEFGHI'; 
+echo trim($var); 
+?> 
+
+□ 执行结果：ABC DEFGHI 
+□ 参考命令：chop()、ltrim() 
+ucfirst 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：将字符串中的第一个字符转变为大写。
+□ 函数语法：string ucfirst (string str) 
+□ 函数说明：假如字符串的第一个字是文字, 那么这个函数会将字符串中的第一个字符转
+变为大写。
+□ 范例程序：
+<?php 
+$text = "if i will"; 
+$text = ucfirst ($text); 
+echo $text; 
+?> 
+
+□ 执行结果：If i will 
+□ 参考命令：strtoupper()、strtolower() 
+ucwords 
+
+
+□ 适用版本：PHP3 >= 3.0.3, PHP4 
+□ 函数功能：将字符串中每一个单字的第一个字符转变为大写。
+□ 函数语法：string ucwords (string str) 
+□ 函数说明：假如字符串中每一个单字的第一个字是文字, 那么这个函数会将字符串中每
+一个单字的第一个字符转变为大写。
+□ 范例程序：
+<?php 
+$text = "if i will"; 
+$text = ucwords ($text); 
+echo $text; 
+?> 
+
+□ 执行结果：If I Will 
+□ 参考命令：strtoupper()、strtolower()、ucfirst() 
+
+<PIXTEL_MMI_EBOOK_2005>4                                                           </PIXTEL_MMI_EBOOK_2005>

@@ -1,0 +1,162 @@
+1.策略模式 *
+2.代理模式 *
+3.单例模式 *
+4.多例模式 *
+4-1. *
+5.工厂模式 *
+6.抽象工厂模式 *
+7.门面模式（外观模式）*？
+8.适配器模式 *
+9.模板方法模式 * 8 9 作用相似 8接口定死 9 抽像基类框好
+10.建造者模式 *
+11.桥梁模式 * *
+12.命令模式 * ？
+13.装饰模式 * 好用 跟 组合15 作用相似
+14.迭代器模式 *  实例数组指针
+15.组合模式 *
+16.观察者模式 *
+17.责任链模式 *
+18.访问者模式 *
+19.状态模式 *
+20.原型模式 *
+21.中介者模式
+22.解释器模式*
+23.亨元模式 ？
+24.备忘录模式 *
+
+
+
+instanceof
+
+静态方法和属性又被称为类变量和嘱性,不能在静态方法中使用伪变量$this
+
+为什么要使用静态方法或属性:
+1,首先他们在代码任何地方都可用
+2,其次,类的每个实例都可以访问类中定义的静态属性,所以可以利用静态属性来设置值,该值可以被类的所有对象使用
+
+一个方法并没有使用任何实例的属性或方法,所以没有理由不把它定义为static
+
+和全局常量一样,类常量一旦设置后就不能改变.常量属性用const关键字来声明.
+常量属性只包含基本数据类的值,不能将一个对象指派给常量.像静态属性一样,只能通过类而不能通过类的实例访问常量属性.
+
+abstract class tmp{}
+抽象类的每个子类都必须实现抽象类中的所有抽象方法.
+
+interface tmp{}
+接口只能定义功能,而不能包含实现的内容.
+
+延迟静态绑定:static关键字
+abstract class tmpObject{
+    public static function create(){
+        return new self();
+    }
+}
+
+class tmp1 extends tmpObject{
+}
+
+class tmp2 extends tmpObject{
+}
+
+tmp1::create();
+
+self对该类所起的作用与$this对对象所起的作用并不完全相同,self被解析为定义create()的tmpObject,而不是解析为调用self的tmp1类(上面实例运行会报错).
+为了解决上面的问题PHP5.3中引入了延迟静态绑定的概念.该特性最明显的标志就是新关键词static.static类似于self,但它指的是被调用的类而不是包含类.
+return new static();
+
+
+Exception类的public方法
+getMessage()
+getCode()
+getFile()
+getLine()
+getPrevious
+getTrace()
+getTraceAsString()
+__toString()
+
+Final类和方法
+
+高质量的面向对象代码往往强调定义明确的接口
+
+拉截器方法
+__get($property)
+__set($property,$value)
+__isset($property)
+__unset($property)
+__call($method,$arg_array)
+
+class CopyMe()
+$first = new  CopyMe();
+$second = $first;
+//PHP4:$second 和$first是两个完全不同的对象
+//PHP5及以后的版本:$second和$first指向同一个对象
+
+$second = clone $first;
+//PHP5及以后的版本:$second和$first现在是两个不同的对象
+
+通过PHP内置的方法__clone() 可以控制复制什么
+...
+function __clone(){
+    $this->id = 0;
+}
+...
+ 以上代码的作用:新副本对象的$id属性会被重设为0.
+
+__toString()
+class StringThing{}
+$st = new StringThing();
+print $st;
+从PHP5.2起,这段代码会产生错误
+
+class Person{
+    function getName(){return "Bob";}
+    function getAge(){return 66;}
+    function __toString(){
+        $desc = $this->getName();
+        $desc .= "(age".$this->getAge().")";
+        return $desc;
+    }
+}
+现在把Person对象打印出来,该对象会被解析为:
+Bob（age 66)
+对于日志和错误报告,__toString()方法非常有用.__toString()方法也可用于设计专门用来传递信息的类,比如Exception类可以把关于异常
+数据的总结信息写到__toString()方法中.
+
+func_num_args()   返回调用函数的传入参数个数,类型是整型
+func_get_arg()   返回指定的参数值
+func_get_args()   返回全部参数的值,类型是数组
+
+is_callable()
+call_user_func()
+call_user_func_array()
+array_walk()
+get_called_class()
+ReflectionClass()
+func_get_args()
+spl_object_hash()
+is_object()
+group,having
+count(distinct(））
+bcadd()
+var_export()
+round()
+abs()
+array_push()
+array_chunk()
+compact():创建一个包含变量名和它们的值的数组
+http_build_query()
+throw_exception()
+ip2long()
+interface
+implements
+
+SPL Autoloader
+PHP5提供的Iterator接口
+
+组件 是抽象的概念而已，通俗的说是一些符合某种规范的类组合在一起就构成了组件。他可以提供某些特定的功能。
+容器 是指符合一定的规范能提供一系列服务的管理器，方便别人使用它来完成一系列的功能
+框架
+
+API：小而美，不会过多干涉你怎么写的代码，类似黑盒，你只需要把它需要的参数给它，接收它返回的参数。其他业务逻辑根据自己的实际场景来，自由度高，适用于一些相对简单的功能模块
+SDK：software development kit 较为复杂，技术难度较大的功能模块，常见的比如聊天模块等，这种如果不是大公司一般都去调用第三方服务来完成

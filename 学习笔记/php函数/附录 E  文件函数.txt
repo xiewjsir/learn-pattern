@@ -1,0 +1,687 @@
+附录E 文件函数 (File) 
+
+basename 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：返回含路径的文件名称。 
+□ 函数语法：string basename (sting path) 
+□ 函数说明：一个字符串中包含了文件的路径, 则会返回文件的名称。在 Windows 系统中
+「/」和「\」都会被看成目录的分隔符, 但是在其他的系统中仅只有「/」为目录分隔符。 
+□ 范例程序： 
+<?php 
+$s='/HomePage/test/basename.php"; 
+$f=basename ($s); 
+echo $f; 
+?> 
+
+□ 执行结果： basename.php 
+□ 参考命令：dirname() 
+chgrp 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：更改文件的群组。 
+□ 函数语法：int chgrp (string filename, mixed group) 
+□ 函数说明：更改文件的群组为指定的群组。只有最高权限的管理员 (supervisor) 可以
+将文件的群组任意更改, 如果是一般用户则可以将文件的群组改成用户所属的群组。更改成
+功后会返回一个true, 若更改不成功则返回 false。这个命令在 Windows 系统中无法工
+作。 
+□ 范例程序：略。 
+□ 执行结果：略。 
+□ 参考命令：chown(), chmod()。 
+chmod 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：更改文件模式。 
+
+□ 函数语法：int chmod (string filename, int mode) 
+□ 函数说明：更改文件的模式为指定的模式。文件的模式一般都是以八进制表示, 因此在
+数值的前面必须加一个 0 (Zero) 来表示八进制。例如 0755。更改成功后会返回一个 true, 
+若更改不成功则返回 false。这个命令在 Windows 系统中无法工作。 
+□ 范例程序：略。 
+□ 执行结果：略。 
+□ 参考命令：chown(), chgrp()。 
+copy 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：复制文件 
+□ 函数语法：int copy (string source, string dest) 
+□ 函数说明：将来源文件复制到目的目录。复制成功后会返回一个 true, 若不成功则返回
+false。 
+□ 范例程序： 
+<?php 
+
+if (copy("test.php","test.bak")) 
+
+echo "复制完成"; 
+
+else 
+
+echo "复制失败"; 
+
+?> 
+
+□ 执行结果：如果 test.php 存在时, 会显示复制完成。如果复制不成功则会显示复制失
+败。 
+□ 参考命令：rename() 
+dirname 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：返回文件的路径名称。 
+□ 函数语法：string dirname (string path) 
+□ 函数说明：返回指定文件的路径。在 Windows 系统中「/」和「\」都会被看成目录的分
+隔符, 但是在其他的系统中仅只有「/」为目录分隔符。 
+□ 范例程序： 
+<?php 
+
+
+ $s='/HomePage/test/test.php"; 
+$f=dirname ($s); 
+echo $f; 
+?> 
+
+
+□ 执行结果：返回 "/HomePage/test" 
+□ 参考命令：basename() 
+chown 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：更改文件的拥有者。 
+□ 函数语法：int chown (sting filename, mixed user) 
+□ 函数说明：只有最高权限管理员有权力可以更改文件的拥有者。chown 会将 filename 的
+拥有者更改为user。更改成功后会返回一个 true, 若不成功则返回false。这个函数在
+Windows 系统中无法执行。 
+□ 范例程序：略。 
+□ 执行结果：略。 
+□ 参考命令：chgrp(), chmod() 
+clearstatcache 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：清除文件在 cache 中的状态数据。 
+□ 函数语法：void clearstatcache (void) 
+□ 函数说明：在执行 PHP 程序时有可能要去检测文件的状态, 例如 file_exists() 函数
+用来检测文件是否 存在, 检测的结果会留在 cache 中以便下一次检测相同文件时可以使
+用。但是如果要检测最新的状态则必将 cache 中的数据清除, 以免读取到旧数据。 
+□ 范例程序：略。 
+□ 执行结果：略。 
+□ 参考命令：stat(), lstat(), file_exists(), is_writeable(),is_readable(), 
+is_executable,is_file(), is_dir(), is_link(),filectime(),fileatime(), 
+fileinode(), filegroup(), fileowner(), filesize(), filetype(), fileperms() 
+diskfreespace 
+
+□ 适用版本：PHP3 >=3.0.7, PHP4 >=4.0.b4 
+
+□ 函数功能：返回目录中可使用的空间。 
+□ 函数语法：float diskfreespace (string directory) 
+□ 函数说明：以 byte 为单位返回指定目录中可以使用的空间。即该分割区 (partition)
+中可使用的空间。 
+□ 范例程序： 
+<?php 
+echo diskfreespace("/"); 
+?> 
+
+□ 执行结果：显示「/」目录中可使用的 byet 数。 
+□ 参考命令：无 
+fclose 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：关闭已打开文件。 
+□ 函数语法：int fclose (int fp) 
+□ 函数说明：关闭 fp 指针所指定的文件。这个文件必须是由 fopen() 或 fscokopen() 函
+数所打开。关闭文件后会返回一个 true, 若不成功则返回 false。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：fopen(), fsockopen() 
+feof 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：测试文件是否已到文件尾。 
+□ 函数语法：int feof (int fp) 
+□ 函数说明：测试指定的 fp 文件是否已到文件尾, 若是已到文件尾则返回 true, 若不是
+则返回 false。fp 所指 的文件必须是由 fopen()、popen() 或 fsockopen() 所打开的文
+件。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：fopen()、popen()、fsockopen() 
+fgetc 
+
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：由文件中取得一个字符。 
+□ 函数语法：string fgetc (int fp) 
+□ 函数说明：fgetc 会返回一个字符, 该字符是由 fp 所指定的文件中取得并返回。如果
+已读到文件尾则返回 False。fp 所指的文件必须是由 fopen()、popen() 或 fsockopen() 
+所打开的文件。 
+□ 范例程序：：略 
+□ 执行结果：略 
+□ 参考命令：fread()、fopen()、popen()、fsockopen()、fgets() 
+fgetcsv 
+
+□ 适用版本：PHP3 <=3.08, PHP4 
+□ 函数功能：读入一行, 并且以分隔符解析读入内容。 
+□ 函数语法：array fgetcsv (int fp, int length [, sting delimiter]) 
+□ 函数说明：函数会自 fp 文件中读入一个长度为 length 的数据, 并且将数据依
+delimiter 所定义的分隔符解析成为不同的 token, 再以数组的形式返回, fp 所指的文件
+必须是由 fopen()、popen()或 fsockopen() 所打开文件。length 定义欲读入的数据长度。
+delimiter 定义分隔符, 若省略时则分隔符默认为「,」。 
+□ 范例程序： 
+<?php 
+$fp=fopen("test.txt","r"); 
+$data=fgetcsv($fp,20,","); 
+foreach ($data as $value) 
+echo "$value <br>"; 
+?> 
+
+□ 执行结果：读入长度为 20 数据并且以「,」作为分隔符, 将数据解析成一个个的 token。
+范例中 text.txt 的内容为「11,22,33,44,55」。执行后显示： 11 22 33 44 55 
+□ 参考命令：无 
+fgets 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：自文件中取得一行的数据。 
+□ 函数语法：string fgets (int fp, int length) 
+
+□ 函数说明：自 fp 文件中读取一行长度为 length 的数据。在读入数据时当读入长度为 
+length 时或读到换行 (new line) 或 EOF 则停止读取数据。fp 所指的文件必须是由
+fopen()、popen() 或 fsockopen() 所打开的文件。 
+□ 范例程序： 
+<?php 
+$fp=fopen("test.txt","r";) 
+while (!feof($fp)){ 
+
+$s=fgets($fp,80); 
+
+echo $s."<br>"; 
+} 
+fclose($fp); 
+?> 
+
+
+□ 执行结果：将文件的内容以行为单位显示出来。每一行最多 80 字符。 
+□ 参考命令：fread()、fopen()、popen()、fgetc()、fsockopen() 
+fgetss 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：读入一行数据并且删除数据中 HTML 标签。 
+□ 函数语法：string fgetss ( int fp, int length [, string allowable_tags]) 
+□ 函数说明：fgetss 的功能和 fgets 函数相同,不同的是 fgetss 会将数据中 HTML 和
+PHP 的标签予以删除。如果要保留标签则可以用第三个选项指出欲保留的标签。如果没有加
+入第三个选项则会删除所有的标签。第三个选项必须是 PHP3.013、PHP4B3 才支持。 
+□ 范例程序： 
+<?php 
+$fp=fopen("test.php","r"); 
+while (!feof($fp)){ 
+
+$s=fgetss($fp,256,"<br><b>"); 
+
+echo $s "<br>"; 
+} 
+fclose($fp); 
+?> 
+
+
+□ 执行结果：读入并显示 test.php 文件的内容, 除了 <br> 和 <b> 两个标签以外其余的
+标签都删除。如果省略第三个选项则所有的标签都会删除。 
+
+□ 参考命令：fgets()、fopen()、fsockopen()、popen()、strip_tags() 
+file 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：将整个文件内容读到数组中。 
+□ 函数语法：array file (string filename [,int use_include_path]) 
+□ 函数说明：将整个文件的内容读到数组中。文件中的一列成为数组中的一个元素
+(element) 。如果文件的内容有三列, 则会分成三个元素存储在数组中。在寻找文件时如果
+第二个选项被设置为 1, 则在目前的目录中找不到文件时就会去include_path 所指定的
+目录中寻找文件。 
+□ 范例程序： 
+<?php 
+$data=file("test.php"); 
+for($index=0;$index<count(data); 
+
+$index++) 
+echo "row $index : $data[$index]"; 
+?> 
+
+
+□ 执行结果：test.php 会被读到 $data 数组中, 再显示出来。 
+□ 参考命令：freadfile()、fopen()、popen() 
+file_exists 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：检查文件是否存在 
+□ 函数语法：int file_exists (string filename) 
+□ 函数说明：如果文件存在时返回 True, 否则返回 False。file_exists 函数能够检查服
+务器端的文件是否 存在, 无法检查服务器以外的案存在与否。检查的结果将会存放在
+cache 中。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：clearstatcache() 
+fileatime 
+
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得最后文件存取时间。 
+□ 函数语法：int fileatime(string filename) 
+□ 函数说明：取得最后文件存取时间, 如果失败返回 false。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：clearstatcache() 
+filectime 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得文件 inode 改变的时间。 
+□ 函数语法：int filectime (string filename) 
+□ 函数说明：取得最后文件改变的时间, 如果失败返回 false。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：clearstatcache() 
+filegroup 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得文件的群组。 
+□ 函数语法：int filegroup (string filename) 
+□ 函数说明：取得文件拥有者的群组 ID, 如果失败返回 false。这个函数无法在 Windows
+系统中执行。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：无 
+fileinode 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得文件 inode。 
+□ 函数语法：int filenode (string filename) 
+□ 函数说明：返回文件 inode 的号码, 如果失败返回 false。这个函数无法在 Windows 系
+统中执行。 
+□ 范例程序：略 
+
+□ 执行结果：略 
+□ 参考命令：clearstatcache() 
+filemtime 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得文件修改的时间。 
+□ 函数语法：int filemtime (string filename) 
+□ 函数说明：取得文件最后被修改时间, 若失败返回 false。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：clearstatcache() 
+fileowner 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得文件拥有者。 
+□ 函数语法：int fileowner (string filename) 
+□ 函数说明：返回文件拥有者的 user ID, 若失败则返回 false。这个函数无法在 Windows
+系统中执行。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：clearstatcache() 
+fileperms 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得文件的许可权。 
+□ 函数语法：int fileperms (string filename) 
+□ 函数说明：返回文件的许可权, 若失败则返回 false。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：clearstatcache() 
+filesize 
+
+□ 适用版本：PHP3, PHP4 
+
+□ 函数功能：取得文件大小。 
+□ 函数语法：int filesize(string filename) 
+□ 函数说明：返回文件的大小。如果失败则返回 false。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：clearstatcache() 
+filetype 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得文件类型。 
+□ 函数语法：string filetype(string filename) 
+□ 函数说明：返回文件的类型, 可能是 dir、file 等等。如果失败则返回 false。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：clearstatcache() 
+flock 
+
+□ 适用版本：PHP3 >=3.0.7, PHP4 
+□ 函数功能：锁住文件。 
+□ 函数语法：bool flock (int fp, int operation) 
+□ 函数说明：fp 为打开文件的文件指针。operation 为操作模式, 说明如下： 
+operation 说明 1 获得一个共享锁 (shared lock) 
+
+2 获得一个互斥锁 (exclusive lock) 
+3 释放一个锁 
+4 不希望上锁时被冻结 (block) 
+
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：无 
+fopen 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：打开一个文件或 URL。 
+
+□ 函数语法：int fopen (string filename, string mode [, int use_incluse_path]) 
+□ 函数说明：filename 为欲打开的文件名称。mode 为打开模式, 请参考下表： 
+mode 说明 
+
+r 打开一个只读文件, 并将 file pointer 放在文件起始位置。 
+
+ r+ 打开一个可读可写文件, 并将 file pointer 放在文件起始位置。 
+
+w 打开一个写入文件, 将 file pointer 放在文件起始位置, 并将文件内容清除, 如果
+文件不存在则尝试 打开新文件。 
+
+ w+ 打开一个可读可写文件, 将file pointer 放在文件起始位置, 并将文件内容清, 如
+果文件不存在则尝试打开新文件。 
+
+a 打开一个写入文件, 将 file pointer 放在文件结束位置。如果文件不存在则尝试打开
+新文件。 
+
+ a+ 打开一个可读可写文件, 将 file pointer 放在文件结束位置。如果文件不存在则尝试
+打开新文件。 
+
+user_include_path 为一个选用参数, 当设置为 1 时会搜索 include_path。 
+
+□ 范例程序：请参考第 16 章 
+□ 执行结果：略 
+□ 参考命令：fclose()、fsockopen()、popen() 
+fpassthru 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：输出文件中剩余的数据 
+□ 函数语法：int fpassthu (int fp) 
+□ 函数说明：将 fp 文件中剩领的数据送到标准输出。如果产生错误则返回 false。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：readfile()、fopen()、peopn()、fsockopen() 
+fputs 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：写入一笔数据。 
+□ 函数语法：int fputs (int fp, string str[, int length]) 
+□ 函数说明：fp 为已打开文件。str 为欲写入的内容。length 为数据长度, 这个参数是
+选用参数。 
+□ 范例程序：略 
+
+□ 执行结果：略 
+□ 参考命令：fwrite() 
+fread 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：读取文件。 
+□ 函数语法：string fread (int fp, int length) 
+□ 函数说明：以 binary 的方式由文件读入长度为 length 的数据。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：fwite()、fopen()、fsockopen()、popen()、fgets()、fgetss()、fpassthru() 
+fseek 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：移动文件指针。 
+□ 函数语法：int fseek (int fp, int offset [, int whence]) 
+□ 函数说明：fp 为一打开的文件。offset 为以 byte 为单位, 代表距离文件指针开始的
+位置。whence 为计算 offset 的方式, 有下列三种： 
+1. SEEK_SET：指针位置为 offset bytes。 
+2. SEEK_CUR：指针位置为目前位置加上 offset bytes。 
+3. SEEK_END：设置指针於文件尾加上 offset bytes。 
+whence 的默认值为 SEEK_SET。 
+
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：ftell()、rewind() 
+ftell 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：告知文件指针读/写的位置。 
+□ 函数语法：int ftell (int fp) 
+□ 函数说明：返回文件指针的位置。 
+□ 范例程序：略 
+
+□ 执行结果：略 
+□ 参考命令：fopen()、popen()、fseek()、rewind() 
+ftruncate 
+
+□ 适用版本：PHP4 >=4.0RC1 
+□ 函数功能：截去文件内容并留下指定长度的数据。 
+□ 函数语法：in 
+□ 函数说明：截去文件 fp 内容, 留下指定 size 长度的数据於文件中。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：无 
+fwire 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：写入文件。 
+□ 函数语法：int fwrite (int fp, string string [, int length]) 
+□ 函数说明：将 strint 写入 fp 文件中。如果设置 length 则写入指定长度的内容。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：fread()、fopen()、popen()、fputs() 
+is_dir 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：告知 filename 是否为一目录。 
+□ 函数语法：bool is_dir (string filename) 
+□ 函数说明：若 filename 存在而且为一目录, 则返回 true, 否则返回 false。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：is_file()、is_link() 
+is_executable 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：告知 filename 是否为可执行文件。 
+
+□ 函数语法：bool is_excutable (string filename) 
+□ 函数说明：若 filename 存在而且为可执行文件, 则返回 true, 否则返回 false。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：is_file()、is_link() 
+is_file 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：告知 filename 是否为一文件。 
+□ 函数语法：bool is_file (string filename) 
+□ 函数说明：若 filename 存在而且为文件, 则返回 true, 否则返回 false。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：is_file()、is_link() 
+is_link 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：告知 filename 是否为一 link。 
+□ 函数语法：bool is_link (string filename) 
+□ 函数说明：若 filename 存在而且为 link, 则返回 true, 否则返回 false。本命令不
+可以使用于 Windows 系统。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：is_file()、is_link() 
+is_readable 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：告知 filename 是否为一可读取文件。 
+□ 函数语法：bool is_readable (string filename) 
+□ 函数说明：若 filename 存在而且为一个可读取文件, 则返回 true, 否则返回false。
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：is_writeable() 
+
+is_writeable 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：告知 filename 是否为一可写入文件。 
+□ 函数语法：bool is_writeable (string filename) 
+□ 函数说明：若 filename 存在而且为一可写入文件, 则返回 true, 否则返回false。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：is_readable() 
+link 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：建立一条链接。 
+□ 函数语法：int link (string target, string link) 
+□ 函数说明：建立一条链接。本命令不可以使用于 Windows 系统。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：symlink()、readlink()、linkinfo() 
+linkinfo 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得 link 信息。 
+□ 函数语法：int linkinfo (string path) 
+□ 函数说明：查验链接是否存在。本命令不可以使用于 Windows 系统。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：symlink()、readlink()、link() 
+mkdir 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：建立目录。 
+□ 函数语法：int mkdir (string pathname, int mode) 
+□ 函数说明：建立一个 pathname 目录, 并以八进制指定文件权限。 
+□ 范例程序： 
+
+<?php 
+echo mkdir ("php", 0755); 
+?> 
+
+□ 执行结果：建立一个 php 的目录, 权限为 755 (drwxr-xr-x) 
+□ 参考命令：rmdir 
+pclose 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：关闭 process 文件 
+□ 函数语法：int pclose (int fp) 
+□ 函数说明：关闭一个 popen() 打开的文件。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：popen() 
+popen 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：打开一个 process 文件 
+□ 函数语法：int popen (string command, string mode) 
+□ 函数说明：打开一个管道 (pipe) 给 process 能执行 forking 的命令。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：pclose() 
+readfile 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：输出一个文件。 
+□ 函数语法：int readfile (string filename [, int use_include_path]) 
+□ 函数说明：读入一个文件并将内容输出到标准输出。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：fpassthru()、file()、fopen()、include()、require()、virtual()
+
+readlink 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：返回目标之 symbolic link。 
+□ 函数语法：string readlink (string path) 
+□ 函数说明：返回 symbol link 的路径, 若失败则返回 false。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：symlink()、linkinfo() 
+rename 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：将文件重新命名。 
+□ 函数语法：int rename (string oldname, string newname) 
+□ 函数说明：将旧文件名改成新文件名 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：无 
+rewind 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：重设文件指针。 
+□ 函数语法：int rewind (int fp) 
+□ 函数说明：重新设置文件指针至开始处。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：fseek()、ftell() 
+rmdir 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：删除目录。 
+□ 函数语法：int rmdir (string dirname) 
+□ 函数说明：删除一个空的目录, 而且必须要有删除目录的权限。 
+□ 范例程序：略 
+
+□ 执行结果：略 
+□ 参考命令：mkdir() 
+stat 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：给予文件信息。 
+□ 函数语法：array stst (string filename) 
+□ 函数说明：返回一个数组内容包括下列项目： 
+1. device 2. inode 3. inode protection mode 4. number of links 5. user id of owner 
+6. group id owner 7. device type if inode device 8. size in byte 9. time of last 
+access 10. time of last modification 11. time of last change 12. blocksize for 
+filesystem I/O 13. number of blocks allocated 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：clearstatcache() 
+lstat 
+
+□ 适用版本：PHP3 >=3.0.4, PHP4 
+□ 函数功能：给予文件或 symbol link 的信息 
+□ 函数语法：array lstat (string filename) 
+□ 函数说明：功能和 stat 相同, 但可使用 symbol link。返回的数组中没有 stat 的第
+四项。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：clearstatcache() 
+symlink 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：建立一个 symbol link。 
+□ 函数语法：int symlink (string target, string link) 
+□ 函数说明：建立一个 target 的 symbol link, 位置在 link。 
+□ 范例程序：略 
+
+□ 执行结果：略 
+□ 参考命令：readlink()、linkinfo() 
+tempnam 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：建立一个唯一的文件名称。 
+□ 函数语法：string tempnam (string dir, string prefix) 
+□ 函数说明：在指定的目录中建立一个唯一的文件名称。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：无 
+touch 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：设置文件修改的时间。 
+□ 函数语法：int touch (string filename, int time) 
+□ 函数说明：设置文件修改的时间为 time。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：无 
+umark 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：更改目前的 umask。 
+□ 函数语法：int umark (int mask) 
+□ 函数说明：设置 PHP 的 umask, 返回旧的 umask。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：无 
+unlink 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：删除一个文件。 
+
+□ 函数语法：int unlink (filename) 
+□ 函数说明：删除 filename。本命令不可以使用于 Windows 系统。 
+□ 范例程序：略 
+□ 执行结果：略 
+□ 参考命令：rmdir() 
+
+<PIXTEL_MMI_EBOOK_2005>42                                                          </PIXTEL_MMI_EBOOK_2005>

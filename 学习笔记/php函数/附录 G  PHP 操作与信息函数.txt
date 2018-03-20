@@ -1,0 +1,123 @@
+附录G PHP 操作与信息函数 (Option) 
+
+getenv 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得环境变量数值。
+□ 函数语法：string getenv (string varname) 
+□ 函数说明：这个函数能够返回 PHP 的环境变量数值, 可以利用这个函数取得相关数据。
+□ 范例程序：
+<?PHP 
+$ip=getenv ("REMOTE_ADDR"); 
+echo " 客户端的 IP 是：".$IP; 
+?> 
+
+□ 执行结果：此结果因用户不同而不同。
+□ 参考命令：无
+get_current_user 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得这个 PHP 程序代码拥有者的名字。
+□ 函数语法：string get_current_user (void) 
+□ 函数说明：取得目前使用中 PHP 程序代码拥有者的名字。
+□ 范例程序：
+<?PHP 
+echo get_current_user(); 
+?> 
+
+□ 执行结果：此结果因用户不同而不同。
+□ 参考命令：无
+getlastmod 
+
+□ 适用版本：PHP3, PHP4 
+
+□ 函数功能：取得这个网页最后更新的时间。
+□ 函数语法：int getlastmod (void) 
+□ 函数说明：取得目前使用中网页最后一次更新网页内容的时间。
+□ 范例程序：
+<?PHP 
+echo " 网页最后更新时间:".date ("F d Y H:i:s,getlastmod()); 
+?> 
+
+□ 执行结果：网页最后更新时间：January 31 2001 19:51:30 
+□ 参考命令：无
+getrusage 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得系统资源使用状况。
+□ 函数语法：array getrusage (int [who]) 
+□ 函数说明：取得目前系统资源使用状况, 以数组的形式返回, 相关参数请参考系统的操作
+手册 getrusage(2)。
+□ 范例程序：
+<?php 
+$dat=getrusage(); 
+echo $dat["ru_nswap"];#number of swaps 
+echo $dag["ru_majflt"]; #number of page 
+faults 
+echo $dat["ru_utime.tv_sec"];#user time 
+used (seconds) 
+echo $dat["ru_utime.tv_usec"]; #user time 
+used (microseconds) 
+?> 
+
+□ 执行结果：依据用户的状况不同而出现不同的结果
+□ 参考命令：无
+phpinfo 
+
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：显示 PHP 系统中所有的相关信息
+□ 函数语法：int phpinfo ([int what]) 
+□ 函数说明：显示关于目前PHP 状态的大量信息，这些信息包括PHP 的选项、延伸功能、
+版本、服务器信息、模块环境、环境参数、操作系统版本、路径…等信息。输出的结果可以
+通过指定下列一个或多个的设置而改变。如果完全不填入参数，则会将全部的信息显示。
+INFO_GENERAL 
+INFO_CREDITS 
+INFO_CONFIGURATION 
+
+INFO_MODULES 
+INFO_ENVIRONMENT 
+INFO_VARIABLES 
+INFO_LICENSE 
+INFO_ALL 
+
+□ 范例程序：
+<?php 
+
+ echo phpinfo(INFO_GENERAL); 
+?> 
+
+□ 执行结果： PHP Version 4.0.3 
+System Windows 95/98 4.10 Build Date Oct 12 2000 Server API CGI Virtual Directory Support 
+enabled Configuration File (php.ini) Path php.ini ZEND_DEBUG disabled Thread Safety Enabled 
+This program makes use of the Zend scripting language engine: Zend Engine v1.0.3, copyright (c) 
+1998-2000 zend Technologies 
+□ 参考命令：phpversion() 
+phpversion 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得 PHP 系统的版本信息。
+□ 函数语法：string phpversion (void) 
+□ 函数说明：将正在执行中的 PHP 解释器版本以字符串的类型返回。
+□ 范例程序：
+
+<?php 
+echo "PHP" 软件版本：".phpversion(); 
+?> 
+
+□ 执行结果： PHP 软件版本: 4.0.3 
+□ 参考命令：phpinfo() 
+set_time_limit 
+
+□ 适用版本：PHP>=4.0.4, PHP4 
+□ 函数功能：限制最长执行时间。
+□ 函数语法：void set_time_limit (int seconds) 
+□ 函数说明：限制这个 PHP 程序所能执行的秒数, 假如程序执行的时间到设置的秒数, 将
+会产生一个 fatal error 的错误信息, 并且中断程序的执行。内定的时间限制是 30 秒, 执行
+时间计算的方法是：程?被读取完成并且被执行时就开始计算, 因此如果设置时间是 20 秒, 
+但是花费了 25 秒载入及执行, 总共必须花费 45 秒网页才被中断执行。如果时间设为 0, 
+表示没有时间限制。
+□ 范例程序：略
+□ 执行结果：略
+□ 参考命令：无
+

@@ -1,0 +1,172 @@
+附录 D 目录函数
+
+chdir 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：改变目录
+□ 函数语法：int chdir (string directory) 
+□ 函数说明：改变PHP 的工作目录到另外一个目录中, 如果没有办法改变目录, 函数会返
+回 FALSE, 否则返回 TRUE。
+□ 范例程序：
+<?php 
+$o=chdir("/php1"); 
+If($o){ 
+echo " 更改路径成功<br>\n"; 
+} 
+else 
+{ 
+echo " 更改路径失败<br>\n"; 
+} 
+?> 
+
+□ 执行结果：如果路径存在, 则会印出下面的信息：更改路径成功如果路径不存在, 则会印
+出下面的信息：Waring: ChDir: No such file or irectory (errno 2) in c:\apache\htdocs\test.php on 
+line 2 更改路径失败
+□ 参考命令：无
+dir 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：目录的 class。
+□ 函数语法：new dir (string directory) 
+□ 函数说明：读取一个目录的虚拟面向对象机制, 函数执行以后, directory 参数给定的目录
+会被打开, 这个函数可以与其他的目录函数一起使用, 例如：readdir()、rewinddir()、closedir()。
+□ 范例程序：
+<?php 
+$d=dir("/Downloads"); 
+
+
+ echo "Handle: ".$d->handle."<br>\n"; 
+echo "Path: ".$d->path."<br>\n"; 
+while($entry=$d->read()){ 
+echo $entry."<br>\n"; 
+} 
+$d->close(); 
+?>
+
+
+□ 执行结果：(此结果会因电脑环境而异) Handle: Resource id #1 Path: /Downloads . .. nero 
+089001D000012.Di manual.rtf 089001D000012.sw gozil35-DownloadPatch.exe 
+gozil35-DownloadPatch.exe.txt manual_a-1.pdf manual_m-x.pdf 
+□ 参考命令：无
+closedir 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：关闭目录的控制
+□ 函数语法：void closedir (int dir_handle) 
+□ 函数说明：关闭由 dir_handle 所设置的目录控制。这个目录控制必须在之前曾通过
+opendir() 打开过。
+□ 范例程序：
+<?php 
+$handle=opendir('.'); 
+echo " 目录的操作:$handle<br>"; 
+echo " 目录下的文件<br>"; 
+while(($file=readdir($handle))!==false){ 
+
+ echo "$file<br>"; 
+} 
+closedir($handle); 
+?>
+
+
+□ 执行结果：(此结果会因电脑环境而异) 目录的操作：Resource id #1 目录下的文件. . . 
+test.php 
+□ 参考命令：无
+opendir 
+
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：打开目录的控制。
+□ 函数语法：int opendir (string path) 。
+□ 函数说明：返回一个目录的控制, 给接下来的 closedir() 、readdir() 及 rewinddir() 等函数
+使用。在下面的范例中, 打开了一个目前正在工作的目录控制。
+□ 范例程序：
+<?php 
+$handle=opendir('.'); 
+echo " 目录的操作:$handle<br>"; 
+echo " 目录下的文件<br>"; 
+while(($file=readdir($handle))!==false){ 
+
+ echo "$file<br>"; 
+} 
+closedir($handle); 
+?>
+
+
+□ 执行结果：(此结果会因电脑环境而异) 目录的操作：Resource id #1 目录下的文件. . . 
+test.php 
+□ 参考命令：无
+readdir 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：从目录中读取文件名的数据。
+□ 函数语法：string readdir (int dir_handle) 
+□ 函数说明：返回目录中下一个文件的文件名。在下面的第一个范例中, 会将工作目录下
+的文件名全部取出并且印出。 readdir() 将会返回 . 及 .. 符号, 假如不想要这两个输出, 可
+以想办法将他们删去, 如同范例 2 所示。
+□ 范例程序 1： 
+<?php 
+$handle=opendir('.'); 
+echo " 目录的操作:$handle<br>"; 
+echo " 目录下的文件<br>"; 
+while(($file=readdir($handle))!==false){ 
+
+ echo "$file<br>"; 
+}
+
+
+
+ closedir($handle); 
+?>
+
+
+□ 执行结果：(此结果会因电脑环境而异) 目录的操作：Resource id #1 文件. . . counter.php 
+HomePage1.txt index.html manager.php mybbs.html test.php 
+□ 范例程序：
+<?php 
+$handle=opendir('.'); 
+while($false!==($file=readdir($handle))){ 
+if($file != "." && $file != ".."){ 
+
+ echo "$file\n"; 
+} 
+closedir($handle); 
+?>
+
+
+□ 执行结果：(此结果会因电脑环境而异) test.php 
+□ 参考命令：无
+rewinddir 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：倒转目录的控制。
+□ 函数语法：void rewinddir (int dir_handle) 
+□ 函数说明：重置 dir_handle 的目录指针到目录的开始位置。
+□ 范例程序：
+<?php 
+$handle=opendir('/downloads'); 
+echo " 目录的操作:$handle<br>"; 
+echo " 目录下的文件<br>"; 
+while(($file=readdir($handle))!==false){ 
+
+ echo "$file<br>"; 
+} 
+rewindir($handle); 
+echo " 目录的操作：$handle<br>"; 
+echo " 目录下的文件<br>"; 
+while (($file=readdir($handle))!==false){ 
+
+
+
+ echo "$file<br>";
+
+ }
+
+ closedir($handle); 
+
+ ?> 
+
+□ 执行结果：目录的操作：Resource id #1 目录下的文件. . . adsl_all.doc adsl_faq.doc 申请
+表件一(90).xls Gcime1.exe 申请表件二(90).doc 目录的操作：Resource id #1 目录下的文
+件. . . adsl_all.doc adsl_faq.doc 申请表件一(90).xls Gcimel.exe 申请表件二(90).doc 
+□ 参考命令：无
+

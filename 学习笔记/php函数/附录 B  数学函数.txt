@@ -1,0 +1,599 @@
+附录 B 数学函数 
+
+abs 
+
+适用版本：PHP3, PHP4 
+函数功能：绝对值。
+函数语法：mixed abs (mixed number) 
+函数说明：返回 number 的绝对值。假如参数是浮点数, 那么返回的数值类型也是浮点
+
+数, 如果参数是整数, 那么返回的数值类型也是整数。
+范例程序：
+
+<?php 
+$Value1=-1; 
+Print ABS($Value1); 
+?> 
+
+执行结果：1 
+参考命令：无
+
+
+acos 
+
+适用版本：PHP3, PHP4 
+函数功能：取得 arc cosine 值。
+函数语法：float acos (float arg) 
+函数说明：返回参数的 arc cosine 值。
+范例程序：
+
+
+<?php 
+$Value1=-1; 
+Print ACOS($Value1); 
+?> 
+
+执行结果：3.1415926535898 
+参考命令：asin(), atan() 
+
+
+asin 
+
+适用版本：PHP3, PHP4 
+函数功能：取得 Arc sine 值。
+函数语法：float asin (float arg) 
+
+
+
+函数说明：返回参数的 arc sine 值。
+范例程序：
+
+
+<?php 
+$Value1=-1; 
+Print ASIN($Value1); 
+?> 
+
+执行结果：-1.5707963267949 
+参考命令：acos(), atan() 
+
+
+atan 
+
+适用版本：PHP3, PHP4 
+函数功能：取得 arc tangent 值。
+函数语法：float atan (float arg) 
+函数说明：返回参数的 arc tangent 值。
+范例程序：
+
+
+<?php 
+$Value1=-1; 
+Print ATAN($Value1); 
+?> 
+
+执行结果：-0.78539816339745 
+参考命令：asin(), acos() 
+
+
+atan2 
+
+适用版本：PHP3, PHP4 
+函数功能：取得两个变量的 arc tangent 值。
+函数语法：float atan2 (float y, float x) 
+函数说明：这个函数能够计算两个变量 x 及 y 的 arc tangent 数值, 它非常相似于计算
+
+y/x 的 arc angent 值, 这函数返回的数值介于 -PI 及 PI 之间。
+范例程序：
+
+<?php 
+$Value1=-1; 
+$Value2=-2; 
+Print ATAN2($Value1,$Value2); 
+?> 
+
+
+执行结果：-2.677945044589 
+参考执令：acos(), atan() 
+
+
+base_convert 
+
+适用版本：PHP3 >=3.0.6, PHP4 
+函数功能：将一个数字转换基底。
+函数语法：strin base_convert (string number, int frombase, int tobase) 
+函数说明：返回一个字符串, 是以 tobase 参数所指定的基底来表现, 原始数据的基底则
+
+是由 frombase 参数来指定, 两个基底介于 2 到 36 之间。number 参数中的数字如果使用
+高于 10 的基底, 就会使用英文字母 a 到 z 来表示, 例如: a 表示 10, b 表示 11。
+范例程序：
+
+<?php 
+$hexadecimal="FF"; 
+$binary=base_convert($hexadecimal, 16 , 2); 
+Print $binary; 
+?> 
+
+执行结果：11111111
+参考命令：无
+
+
+bindec 
+
+适用版本：PHP3, PHP4 
+函数功能：将二进制转换为十进制。
+函数语法：int bindec (string binary_string) 
+函数说明：将参数 binary_string 中的二进制数字转换成相等的十进制数字, 最大允许转
+
+换的数字由二进制来表示的 31 个 bit 的1 或用十进制来表示是 2147483647。
+范例程序：
+
+<?php 
+$Bin="110100010"; 
+$Dec=BINDEC($Bin); 
+Print $Dec; 
+?> 
+
+执行结果：418 
+参考命令：decbin() 
+
+
+
+ceil 
+
+适用版本：PHP3, PHP4 
+函数功能：取得屋顶数值。
+函数语法：int ceil (float number) 
+函数说明：如果参数所指定的数字有小数, 则返回参数所指定数字的下一个最高整数, 使
+
+用 cell 函数在整数上面是多余的。
+范例程序：
+
+<?php 
+$Value1=ceil (-1.4); 
+$Value2=ceil (-2.1); 
+$Value3=ceil (2.1); 
+$Value4=ceil (12.7); 
+Print $Value1." ".$Value2." ".$Value3." ".$Value4; 
+?> 
+
+执行结果：-1 -2 3 13
+参考命令：floor(), round() 
+
+
+cos 
+
+适用版本：PHP3, PHP4 
+函数功能：取得 cosine 值。
+函数语法：float cos (float arg) 
+函数说明：返回参数的 cosine 数值。
+范例程序：
+
+
+<?php 
+$Value1=COS(-1); 
+Print $Value1; 
+?> 
+
+执行结果：0.54030230586814 
+参考命令：sin(), tan() 
+
+
+decbin 
+
+适用版本：PHP3, PHP4 
+函数功能：将10 进制转成2 进制。
+函数语法：string decbin (int number) 
+
+
+
+函数说明：将参数 number 中的十进制数字转换成相等的二进制数字, 并且以字符串类
+型返回, 最大允许转换的数字由二进制来表示是 31 个 bit 的 1 或用十进制来表示是
+2147483647。
+
+范例程序：
+
+<?php 
+$Dec="11"; 
+$Bin=DECBIN($Dec); 
+Print $Bin; 
+?> 
+
+执行结果：1011 
+参考命令：bindec() 
+
+
+dechex 
+
+适用版本：PHP3, PHP4 
+函数功能：将10 进制转成16 进制。
+函数语法：string dechex (int number) 
+函数说明：将参数 binary_string 中的十进制数字转换成相等的十六进制数字, 最大允许
+
+转换的数字以十六进制来表示是 7fffffff 或是用十进制来表示是 2147483647。
+范例程序：
+
+<?php 
+$Dec="1199"; 
+$Hex=DecHex($Dec); 
+Print $Hex; 
+?> 
+
+执行结果：4af 
+参考命令：hexdec() 
+
+
+decoct 
+
+适用版本：PHP3, PHP4 
+函数功能：将十进制转成八进制。
+函数语法：string decoct (int number) 
+函数说明：将参数 binary_string 中的十进制数字转换成相等的八进制数字, 最大允许转
+
+换的数字以八进制来表示是 17777777777 或用十进制来表示是 2147483647。
+范例程序：
+
+
+<?php 
+$Dec="7799"; 
+$Oct=DecOct($Dec); 
+Print $Oct; 
+?> 
+
+执行结果：17167 
+参考命令：octdec() 
+
+
+exp 
+
+适用版本：PHP3, PHP4 
+函数功能：e 的参数次方。
+函数语法：float exp (float arg) 
+函数说明：返回 e 的参数次方。
+范例程序：
+
+
+<?php 
+$arg=1; 
+$Result=exp($arg); 
+Print $Result; 
+?> 
+
+执行结果：2.718281828459 
+参考命令：pow() 
+
+
+floor 
+
+适用版本：PHP3, PHP4 
+函数功能：取得地板数值。
+函数语法：int floor (floor number) 
+函数说明：如果参数所指定的数字有小数, 则返回参数所指字数的下一个低整数, 使用
+
+floor 函数在整数上面是多余。
+范例程序：
+
+<?php 
+$Value1=floor(-1.4); 
+$Value2=floor(-2.1); 
+$Value3=floor(2.1); 
+$Value4=floor(12.7); 
+Print $Value1." ".$Value2." ".$Value3." ".$Value4; 
+
+
+ ?> 
+
+执行结果：-2 -3 2 12
+参考命令：ceil(), round() 
+
+
+getrandmax 
+
+适用版本：PHP3, PHP4 
+函数功能：取的最大可能的随机数。
+函数语法：int getrandmax (void) 
+函数说明：返回一个数值, 数值的内容为调用 rand() 函数后, 可能产生的最大随机随机
+
+数。
+范例程序：
+
+<?php 
+$Value1=getrandmax(); 
+Print $Value1; 
+?> 
+
+执行结果：32767 
+参考命令：rand(), srand(), mt_rand(), mt_srand(), mt_getrandmax() 
+
+
+hexdec 
+
+适用版本：PHP3, PHP4 
+函数功能：将 16 进制转换为 10 进制。
+函数语法：int hexdec (string hex_string) 
+函数说明：将参数 binary_string 中的十六进制数字转换成相等的十进制数字, 最大允许
+
+转换的数字以十六进制来表示是 7fffffff 或用十进制来表示是 2147483647。
+范例程序：
+
+<?php 
+$Hex="AEF"; 
+$Dec=HexDec($Hex); 
+Print $Dec; 
+?> 
+
+执行结果：2799 
+参考命令：dechex() 
+
+
+log 
+
+
+适用版本：PHP3, PHP4 
+函数功能：自然对数。
+函数语法：float log (float arg) 
+函数说明：返回参数的自然对数。
+范例程序：
+
+
+<?php 
+$lognum=10; 
+$Result=Log($lognum); 
+Print $Result; 
+?> 
+
+执行结果：2.302585092994 
+参考命令：log10() 
+
+
+log10 
+
+适用版本：PHP3, PHP4 
+函数功能：取的 10 为基底的自然对数。
+函数语法：float log10 (float arg) 
+函数说明：返回以 10 为基底的自然对数。
+范例程序：
+
+
+<?php 
+$lognum=100; 
+$Result=Log10($lognum); 
+Print $Result; 
+?> 
+
+执行结果：2 
+参考命令：log() 
+
+
+max 
+
+适用版本：PHP3, PHP4 
+函数功能：找出最大的数值。
+函数语法：mixed max (mixed arg1, mixed arg2, mixed argn) 
+函数说明：max() 返回参数中最大的数值, 假如第一个参数是一个数组, 这个函数会返回
+
+数组中最大的数值, 假如第一个参数是一个整数、字符串、双精度, 那么最少需要两个参数, 
+同时这个函数会返回这些数字中最大的数值, 且参数的个数没有限制。假如一个或一个以上
+
+
+的参数是双精度, 那么所有的参数都会被当作是双精度, 同时返回的数值也是双精度。如果
+所有的参数都是整数, 那么返回的数值就是整数。
+范例程序：
+
+<?php 
+$Value1=array(12,16,27,55,33); 
+$Result=max($Value1); 
+Print $Result ."<br>"; 
+Print max(12,21,12.9,20,44); 
+?> 
+
+执行结果： 55 44 
+参考命令：min() 
+
+
+min 
+
+适用版本：PHP3, PHP4 
+函数功能：在参数列中找出最小的数值。
+函数语法：mixed min (mixed arg1, mixed arg2, mixed argn) 
+函数说明：min() 返回参数中最小的数值, 假如第一个参数是一个数组, 这个函数会返回
+
+数组中最小的数值, 假如第一个参数是一个整数、字符串、双精度, 那么最少需要两个参数, 
+同时这个函数会返回这些数字中最小的数值, 且参数的个数没有限制。假如一个或一个以上
+的参数是双精度, 那么所有的参数都会被当作是双精度, 同时返回的数值也是双精度。如果
+所有的参数都是整数, 那么返回的数值就是整数。
+
+范例程序：
+
+<?php 
+$Value1=array(12,16,27,55,33); 
+$Result=min($Value1); 
+Print $Result ."<br>"; 
+Print max(42,21,12.9,20,44); 
+?> 
+
+执行结果： 12 12.9 
+参考命令：max() 
+
+
+octdec 
+
+适用版本：PHP3, PHP4 
+函数功能：将八进制转换成十进制。
+函数语法：int octdec (string octal_string) 
+
+
+
+函数说明：将参数 octal_string 中的八进制数字转换成相等的十进制数字, 最大允许转换
+的数字以八进制来表示是 17777777777 或用十进制来表示是 2147483647。
+范例程序：
+
+<?php 
+$Oct="7712"; 
+$Dec=OctDec($Oct); 
+Print $Dec; 
+?> 
+
+执行结果：4042 
+参考命令：decoct() 
+
+
+pi 
+
+适用版本：PHP3, PHP4 
+函数功能：得到 pi 的数值。
+函数语法：double pi (void) 
+函数说明：返回一个接近 pi 的数值。
+范例程序：
+
+
+<?php 
+Print PI(); 
+?> 
+
+执行结果：3.1415926535898 
+参考命令：无
+
+
+pow 
+
+适用版本：PHP3, PHP4 
+函数功能：返回指数。
+函数语法：float pow (float base, float exp) 
+函数说明：返回指数, 以参数 base 为底, 参数 exp 为次方。
+范例程序：
+
+
+<?php 
+$base=3; 
+$exp=2; 
+$result=Pow($base,$exp); 
+Print $result; 
+
+
+ ?> 
+
+执行结果：9 
+参考命令：exp() 
+
+
+rand 
+
+适用版本：PHP3, PHP4 
+函数功能：产生一个随机数数值。
+函数语法：int rand ([int min [, int max]]) 
+函数说明：假如不设置参数, 这个函数会产生一个虚拟随机数, 其数值范围介于 0 至
+
+RAND_MAX 之间, 假如想要产生一个介于 5 至 15 之间的随机数, 就必须设置 min 参
+数及 max 参数, 记得在使用这个函数前, 必须要初始化随机数产生器。
+范例程序：
+
+<?php 
+srand((double)microtime() * 1000000); 
+Print rand()."<br>"; 
+Print rand(2,10); 
+?> 
+
+执行结果： 2432 9 
+参考命令：srand(), getrandmax(), mt_rand(), mt_srand(), mt_getrandmax() 
+
+
+round 
+
+适用版本：PHP3, PHP4 
+函数功能：四舍五入。
+函数语法：double round (double val [, int precision]) 
+函数说明：返回参数的四舍五入并且可以指定小数的精确度。
+范例程序：
+
+
+<?php 
+$Val[]=round(3.4); //$foo == 3.0 
+$Val[]=round(3.5); //$foo == 4.0 
+$Val[]=round(3.6); //$foo == 4.0 
+$Val[]=round(1.95583,2); //$foo == 1.96 
+foreach($Val as $value){ 
+Print $value."<br>"; 
+?> 
+
+
+执行结果：3 4 4 1.96 
+参考命令：ceil(), floor() 
+
+
+sin 
+
+适用版本：PHP3, PHP4 
+函数功能：取得 sine 数值。
+函数语法：float sin (float arg) 
+函数说明：返回参数的 sine 值。
+范例程序：
+
+
+<?php 
+$val=sin(3.141592654/2); 
+Print $val; 
+?> 
+
+执行结果：1 
+
+参考命令：cos(), tan() 
+
+sqrt 
+
+适用版本：PHP3, PHP4 
+函数功能：开根号。
+函数语法：float sqrt (float arg) 
+函数说明：返回参数的开根号值。
+范例程序：
+
+
+<?php 
+$val=sqrt(9); 
+Print $val; 
+?> 
+
+执行结果：3 
+
+参考命令：无
+
+srand 
+
+适用版本：PHP3, PHP4 
+函数功能：初始化随机数产生器。
+函数语法：void srand (int seed) 
+函数说明：使用随机数前最好先执行此函数，如此可以保证产生的随机数确实够乱。
+
+
+范例程序：
+
+<?php 
+srand((double) microtime() * 1000000); 
+Print rand()."<br>"; 
+Print rand(2,10); 
+?> 
+
+执行结果： 1271 6 
+参考命令：rand(), getrandmax(), mt_rand(), mt_srand(), mt_getrandmax() 
+
+
+tan 
+
+适用版本：PHP3, PHP4 
+函数功能：取得 Tangent 值。
+函数语法：float tan (float arg) 
+函数说明：返回参数的 Tangent 值。
+范例说明
+
+
+<?php 
+$val=tan(3.141592654/2); 
+Print $val; 
+?> 
+
+执行结果：1.0000000002051 
+参考命令：sin(), cos() 
+
+
+
+<PIXTEL_MMI_EBOOK_2005>4                                                           </PIXTEL_MMI_EBOOK_2005>

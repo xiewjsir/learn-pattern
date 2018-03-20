@@ -1,0 +1,310 @@
+附录 F 时间函数
+
+checkdate 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：检查日期/时间是不合法。
+□ 函数语法：int checkdate (int month, int day, int year) 
+□ 函数说明：如果参数所给定的日期是合法的则返回 true, 否则返回 false, 日期/时间如果
+符合下面所给的数值就是合法的：年的范围必须介于 0～32767, 月的范围必须介于 1-12, 
+天的允许范围必须要考虑年的范围及月的范围。
+□ 范例程序：
+<?php 
+
+ if (checkdate(13,12,1999)) { 
+
+ echo " 合法的日期"; 
+
+}
+
+ else {
+
+ echo " 不合法的日期"; 
+
+}
+
+ ?> 
+
+□ 执行结果：不合法日期
+□ 参考命令：无
+date 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：格式化本地的时间/日期。
+□ 函数语法：string date (string format [, int timestamp]) 
+□ 函数说明：返回一个经过格式化字符串, 依据给定的格式, 使用给定的 timestamp 或者是
+现在的本地时间,下面的字符可以被格式化字符串所接受：
+□ a - "am" 或 "pm" 。
+□ A - "AM" 或 "PM"。
+□ B - Swatch 网络时间。
+□ d - 日, 2 位数, 例如："01" to "31" 。
+□ D - 星期, 文字格式, 三个字, 例如："Fri"。
+□ F - 月份, 文字格式, 例如："january" 。
+
+□ g - 时, 12-小时格式, 例如："1" to "12" 。
+□ G - 时, 24-小时格式, 例如："0" to "23" 。
+□ h - 时, 12-小时格式, 例如："01" to "12" 。
+□ H - 时, 24-小时格式, 例如："00" to "23" 。
+□ i - 分；例如："00" to "59" 。
+□ I - (大写I) - "1" 日光节约时间, "0" otherwise. 
+□ j - 日, 例如："1" to "31" 。
+□ l - (小写 L) - 星期, 文字, 例如："Friday" 。
+□ m -月份, 例如："01" to "12" 。
+□ M - 月份, 文字, 三个字, 例如："jan" 。
+□ n - 月份, 例如："1" to "12" 。
+□ s - 秒, 例如："00" to "59" 。
+□ S - 英文顺序的字尾, 文字类型, 两个字, 例如："th", "nd" 。
+□ t - 在指定的月份中有几天, 例如：范围在 "28" 到 "31" 。
+□ T -这电脑的时间区域设置, 例如："MDT"。
+□ w - 星期, 数字类型, 例如："0" ( 星期日) to "6" ( 星期六)。
+□ Y -年, 四位数, 例如："1999" 。
+□ y - 年, 两位数, 例如："99" 。
+□ z - 一年的第几日, 例如："0" to "365" 。
+格式化字符串中无法辨识的字符都会被直接输出来, 可以利用 date() 及 mktime() 来寻找
+过去或未来的某一天的信息。
+
+□ 范例程序：
+<?php 
+echo (date ("1 ds of F Y h:i:s A")); 
+echo "<BR>"; 
+echo ("July 1, 2000 is on a " . date ("1", 
+mktime (0,0,0,7,1,2000))); 
+?> 
+
+□ 执行结果：Wednesday 01st of November 2000 08:43:08 PM July 1, 2000 is on a Saturday 
+□ 参考命令：gmdate(), mktime() 
+getdate 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：取得日期/时间的信息
+
+□ 函数语法：array getdate (int timestamp) 
+□ 函数说明：返回一个数组, 数组内容包括日期的信息以及时间的信息, 数组的元素内容及
+顺序如下所示：
+□ "seconds" - 秒。
+□ "minutes" - 分。
+□ "hours" - 时。
+□ "mday" - 某月的第几天。
+□ "wday" - 星期, 数字类型。
+□ "mon" - 月, 数字类型。
+□ "year" - 年, 数字类型。
+□ "yday" - 每年的第几天, 数字类型, 例如："299" 。
+□ "weekday" - 星期, 文字类型, 例如："Friday" 。
+□ "month" - 月, 文字类型, 例如："january" 。
+□ 范例程序：
+<?php 
+$datelist = getdate(); 
+foreach ($datelist as $value) { 
+Echo $value."<BR>"; 
+} 
+?> 
+
+□ 执行结果：(按照 Key 值排列) 6 0 21 1 3 11 2000 305 Wednesday November 973083606 
+□ 参考命令：无
+gmdate 
+
+□ 适用版本：PHP3, PHP4 
+□ 函数功能：格式化一个 GMT/CUT 的日期/时间数据。
+□ 函数语法：string gmdate (string format, int timestamp) 
+□ 函数说明：返回来的是格林威治标准时间, Greenwich Mean Time (GMT) , 例如现在时间
+是芬兰 (GMT+0200), 下面的范例程序的第一行会输出"Jan 01 1998 00:00:00", 但是第二行
+会输出"Dec 31 1997 22:00:00" 。
+□ 范例程序：
+<?php 
+
+
+echo date ("M d Y H:i:s", mktime 
+(0,0,0,10,10,2000)). "<BR>";
+echo gmdate ("M d Y H:i:d", mktime 
+(0,0,0,10,10,2000)); 
+?>
+
+
+□ 执行结果：Oct 10 2000 00:00:00 Oct 09 2000 16:00:00 
+□ 参考命令：date(), mktime(), gmmktime() 
+gmstrftime 
+
+□ 适用版本：PHP3>=3.0.12, PHP4>=4.0RC2 
+□ 函数功能：依据本地的设置, 格式化一个 GMT/CUT 的日期/时间数据。
+□ 函数语法：string gmstrftime (string format, int timestamp) 
+□ 函数说明：操作如同 strftime() 函数, 除了返回来的时间是格林威治标准时间 Greenwich 
+Mean Time (GMT) 。例如现在时间是Eastern Standard Time (GMT-0500), 下面的范例程序的
+第一行会输出"Dec 31 1998 20:00:00", 但是第二行会输出"Jan 01 1999 01:00:00" 。
+□ 范例程序：
+<?php 
+setlocale ('LC_TIMIE', 'en_US'); 
+echo strftime ("%b %d %Y %H:%M:%S", mktime 
+(13,0,0,11,3,00)). "<BT>"; 
+echo gmstrftime ("%b %d %Y %H:%M:%S", mktime 
+(13,0,0,11,3,00)); 
+?> 
+
+□ 执行结果：Nov 03 2000 13:00:00 Nov 03 2000 05:00:00 
+□ 参考命令：strftime() 
+localtime 
+
+□ 适用版本：PHP4>=4.0RC2 
+函数功能得到一个本地时间。
+□ 函数语法：array localtime ([int timestamp [, bool is_associative]]) 
+□ 函数说明：这个 localtime() 函数会返回一个数组, localtime() 的第一个参数是 timestamp, 
+假如第一个参数没有给定, 则自动会使用现在时间。localtime() 的第二个参数是
+
+is_associative, 假如第二个参数设置成为 0 或者是没有写出设置, 那么返回的数组是一个一
+般的数字类型的索引数组。假如参数设置成为 1, 那么 localtime() 返回的一个数组则是以
+C 函数调用的元素结构。数组中所使用的键值其代表意义如下所示：
+
+□ "tm_sec" - 秒。
+□ "tm_min" -分。
+□ "tm_hour" - 时。
+□ "tm_mday" -一个月的第几天。
+□ "tm_mon" -一年的第几个月。
+□ "tm_year" - 公元的年。
+□ "tm_wday" - 一个星期的第几天。
+□ "tm_yday" - 一年的第几天。
+□ "tm_isdst" - 日光节约时间。
+□ 范列程序：
+<?php 
+$timearray = localtime() 
+foreach ($timearray as $value) { 
+Echo $value. "<BR>" 
+} 
+?> 
+
+□ 执行结果：15 55 3 11 100 0 337 0 
+□ 参考命令：无
+mktime 
+
+□ 适用版本：PHP3, PHP4 
+函数功能得到 UNIX timestamp 的日期格式。
+□ 函数语法：int mktime (int hour, int minute, int second,int month, int day, int year [, int is_dat]) 
+□ 函数说明：注意参数的顺序并不是按照由左而右排列, 使用方法请参考范例程序。任何
+的参数如果被忽略, 则会依据现在的本地日期及时间来设置数字, 假如这个时间是在日光节
+约时间中, 参数 is_dst 可以被设置成 1, 否则设置成为 0；或者假如不知道是否是在日光
+节约时间内, 则会自动设置成为 -1 (内定值)。mktime() 对于用来执行日期的运算或是检
+查日期合法性非常有用, 它可以自动计算输入的日期是否超过范围。Year 可以是两位和四位
+数的数字, 如果数字介于 0-69 则相当于2000-2069 , 如果数字介于 70-99 则相当于
+1970-1999, 某一个月的最后一天可以表示成下一个月的第。
+
+□ 范例程序：
+<?php 
+
+echo date ("M-d-Y", mktime 
+
+(0,0,0,12,32,2000)); 
+
+ echo "<BR>"; 
+
+echo date ("M-d-Y", mktime 
+
+(0,0,0,13,12,2000)); 
+
+ echo "<BR>"; 
+
+echo date ("M-d-Y", mktime 
+
+(0,0,0,1,1,2001)); 
+
+ echo "<BR>"; 
+
+echo date ("M-d-Y", mktime 
+
+(0,0,0,1,1,00)); 
+
+ echo "<BR>"; 
+
+$lastday = mktime (0,0,0,3,0,2000); 
+
+ echo strftime ("2000 年 2 月的最后一天是： %d", 
+
+$lastday); 
+
+ echo "<BR>"; 
+
+$lastday = mktime (0,0,0,4,-31,2000); 
+
+ echo strftime ("2000 年 2 月的最后一天是： %d", 
+
+$lastday); 
+
+ echo "<BR>"; 
+
+ ?> 
+
+□ 执行结果：Jan-01-2001 Jan-01-2001 Jan-01-2001 Jan-01-2000 2000 年 2 月的最后一天
+是：29 2000 年 2 月的最后一天是：29 
+□ 参考命令：date(), time() 
+strftime 
+
+□ 适用版本：PHP3, PHP4 
+函数功能依据本地的设置, 格式化本地时间/日期。
+□ 函数语法：string strftime (string format [, int timestamp]) 
+□ 函数说明：返回一个经过格式化的字符串, 字符串的内容依据给定的 timestamp, 如果没
+有 timestamp 则会使用现在的本地时间, 格式化字符串可以包括下面的这些指定符号：
+□ %a - 依据现在的本地时间显示缩写的星期名称。
+□ %A - 依据现在的本地时间显示完整的星期名称。
+
+□ %b - 依据现在的本地时间显示缩写的月份名称。
+□ %B - 依据现在的本地时间显示完整的月份名称。
+□ %c - 依据现在本地的日期及时间表示设置。
+□ %C - 世纪 (公元年除以 100 去掉小数成为整数, 范围是 00 至 99。
+□ %d - 以十进制表示一个月的第几天, 范围是 00 至 31。
+□ %D - 和 %m/%d/%y 表示法相同。
+□ %e - 以十进制表示一个月的第几天, 范围是 1 至 31。
+□ %h - 和 %b 表示法相同。
+□ %H - 以十进制及 24 时制表示小时, 范围是 00 至 23。
+□ %I - 以十进制及 12 小时制表示小时, 范围是 01 至 12。
+□ %j - 以十进制表示一年的第几天, 范围是 001 至 366。
+□ %m - 以十进制表示月份范围是 1 至 12。
+□ %M - 以十进制表示分。
+□ %n - 换行字符。
+□ %r - 以 a.m. 及 p.m. 表示时间。
+□ %R - 以 24 小时制表示时间。
+□ %S - 以十进制表示秒。
+□ %t - tab 字符。
+□ %T - 现在的时间, 相当于 %H:%M:%s。
+□ %u - 以十进制表示星期, 范围是 1 至 7, 表示星期一。
+□ %U - 以十进制来表示是一年的第几周, 有第一个星期天的周是第一周。
+□ %w - 一周的第几天以十进制表示, 例如：星期天是 0。
+□ %y - 两位数的公元年份。
+□ %Y - 四位数的公元年份。
+□ %Z - 时区或名字的缩写。
+□ %% - 显示一个文字的 '%' 字符。
+□ 范例程序：
+<?php 
+setlocale ("LC_TIME", "ch"); 
+print (strftime (%B.\n)); 
+?> 
+
+□ 执行结果：星期三. 
+□ 参考命令：setlocale(), mktime(), strftime() 
+time 
+
+
+□ 适用版本：PHP3, PHP4 
+函数功能返回 UNIX timestamp 
+□ 函数语法：int time (viod) 
+□ 函数说明：返回现在的时间, 从Unix Epoch (January 1 1970 00:00:00 GMT) 开始计算到
+现在的秒数。
+□ 范例程序：
+<?php 
+echo time(); 
+?> 
+
+□ 执行结果：973086305 
+□ 参考命令：date() 
+strtotime 
+
+□ 适用版本：PHP3>= 3.0.12, PHP4>= 4.0b2 
+□ 函数功能：剖析英文文字的日期时间描述, 转换为 UNIX timestamp 的格式。
+□ 函数语法：int strtotime (string time [, int now]) 
+□ 函数说明：这个函数的参数可以是一个包含了英文日期格式的字符串, 函数会剖析任何
+关于英文文字的日期时间描述, 转换为 UNIX timestamp 的格式。
+□ 范例程序：
+<?php 
+echo strtotime ("10 December 2000"); 
+?> 
+
+□ 执行结果：976377600 
+□ 参考命令：无
+
+<PIXTEL_MMI_EBOOK_2005>1                                                           </PIXTEL_MMI_EBOOK_2005>
