@@ -3,6 +3,8 @@
 /*
  * 门面模式（外观模式）
  * @author http://www.phppan.com/2010/06/php-design-pattern-7-facade/
+ * template method 是继承关系，父类规定函数调用顺序，子类对各函数进行实现
+ * facade 是组合关系，facede 清楚组合进来的类函数调用顺序，这些类不需要继承 facade
  */
 
 class Camera {
