@@ -1,4 +1,7 @@
 <?php
+/**
+ * 解析器模式
+ */
 abstract class Expression{
     private static $keycount = 0;
     private $key;
@@ -42,3 +45,5 @@ $context = new InterpreterContext();
 $literal = new LiteralExpression('four');
 $literal->interpret($context);
 print $context->lookup($literal)."\n";
+
+

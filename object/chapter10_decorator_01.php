@@ -1,4 +1,7 @@
 <?php
+/**
+ * 装饰器模式
+ */
 abstract class Tile { // 砖瓦
     abstract function getWealthFactor(); // 获取财富
 }
