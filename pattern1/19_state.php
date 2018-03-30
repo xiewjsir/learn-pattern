@@ -143,8 +143,7 @@ class ClosingState extends LiftState {
         $this->_context->getLiftState()->run();
     }
 
-    //电梯门关着，我就不按楼层  
-
+    //电梯门关着，我就不按楼层 
     public function stop() {
         $this->_context->setLiftState(Context::$stoppingState);  //设置为停止状态；  
         $this->_context->getLiftState()->stop();
