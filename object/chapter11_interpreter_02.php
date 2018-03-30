@@ -106,13 +106,6 @@ abstract class OperatorExpression extends Expression {
         $this->r_op = $r;
     }
 
-    /**
-     * @param $ctx       InterpreterContext
-     * @param $result_l  Expression $l's result
-     * @param $result_r  Expression $r's result
-     */
-    protected abstract function doInterpret(InterpreterContext $ctx, $result_l, $result_r);
-
     public function interpret(InterpreterContext $ctx) {
         $this->l_op->interpret($ctx);
         $this->r_op->interpret($ctx);
@@ -121,6 +114,12 @@ abstract class OperatorExpression extends Expression {
         $this->doInterpret($ctx, $result_l, $result_r);
     }
 
+    /**
+     * @param $ctx       InterpreterContext
+     * @param $result_l  Expression $l's result
+     * @param $result_r  Expression $r's result
+     */
+    protected abstract function doInterpret(InterpreterContext $ctx, $result_l, $result_r);
 }
 
 /**
@@ -195,7 +194,8 @@ $ctx = new InterpreterContext();
 
 $input = new VariableExpression('input');
 $statement = new BooleanOrExpression(
-        new EqualsExpression($input, new LiteralExpression('four')), new EqualsExpression($input, new LiteralExpression(4))
+        new EqualsExpression($input, new LiteralExpression('four')),
+        new EqualsExpression($input, new LiteralExpression(4))
 );
 
 $input->setValue('four');

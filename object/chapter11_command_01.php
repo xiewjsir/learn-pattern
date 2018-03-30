@@ -75,11 +75,6 @@ class CommandFactory{
             throw new Exception("illegal characters in action");
         }
         $class = UCFirst(strtolower($action))."Command";
-        $file = self::$dir.DIRECTORY_SEPARATOR."{$class}.php";
-        if(!file_exists($file)){
-            throw new CommandNotFoundException("could not find $file");
-        }
-        require_once($file);
         if(!class_exists($class)){
             throw new CommandNotFoundException("not $class class located");
         }
