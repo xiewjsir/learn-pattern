@@ -18,7 +18,7 @@
 class human {
 
     public function say($name) {
-        echo $name, ' 吃了吗?<br />';
+        echo $name, " 吃了吗?\n";
     }
 
 }
@@ -26,12 +26,12 @@ class human {
 class stu extends human {
 
     public function say() {
-        echo '切克闹,卡猫百比<br />';
+        echo "切克闹,卡猫百比\n";
     }
 
     /*
       public function say($a,$b,$c){
-      echo '哥仨好';
+      echo "哥仨好";
       }
       报错:
       Fatal error: Cannot redeclare stu::say() in D:\wamp\www\php\61.php on line 28
@@ -41,7 +41,7 @@ class stu extends human {
 
 $li = new stu();
 $li->say();
-$li->say('binghui'); // 上面这个过程叫重写override!   
+$li->say("binghui"); // 上面这个过程叫重写override!   
 /*
   结果:
   切克闹,卡猫百比
@@ -59,7 +59,7 @@ class Calc {
         } else if (count($args) == 2) {
             return $args[0] * $args[1];
         } else {
-            return '未知图形';
+            return "未知图形";
         }
     }
 
@@ -67,7 +67,7 @@ class Calc {
 
 $calc = new Calc();
 // 计算圆的页面   
-echo $calc->area(10), '<br />';
+echo $calc->area(10), "\n";
 // 计算矩形的面积   
 echo $calc->area(5, 8);
 ?>  

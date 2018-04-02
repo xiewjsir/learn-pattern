@@ -54,4 +54,15 @@ $e = GoodBye::getInstance();
 
 $f = GoodBye::getInstance('your');
 // $d !== $f 
+
+ function test(){        
+    print_r(func_get_args());   
+    echo "\n";   
+    echo func_get_arg(1);   
+    echo "\n";   
+    echo func_num_args();
+    echo "\n";
+}   
+
+test("www","jb51","net");  
 ?>
