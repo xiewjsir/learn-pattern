@@ -1,4 +1,9 @@
 <?php
+/**
+ * template method 是继承关系，父类规定函数调用顺序，子类对各函数进行实现
+ * facade 是组合关系，facede 清楚组合进来的类函数调用顺序，这些类不需要继承 facade
+ */
+
 function getProductFileLines($file){
     return file($file);
 }
